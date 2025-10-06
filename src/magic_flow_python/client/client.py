@@ -14,7 +14,7 @@ from magic_flow_python import cadence
 from magic_flow_python.cadence import Value, cadence_object_hook, encode_arguments
 from magic_flow_python.client import entities
 from magic_flow_python.proto.flow.access import (
-    AccessAPIStub,
+    AccessApiStub,
     PingResponse,
 )
 from magic_flow_python.script import Script
@@ -23,7 +23,7 @@ from magic_flow_python.tx import Tx, TransactionStatus
 log = logging.getLogger(__name__)
 
 
-class AccessAPI(AccessAPIStub):
+class AccessAPI(AccessApiStub):
     def __init__(
         self,
         channel: "Channel",

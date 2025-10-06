@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "magic-flow"
-version = "0.0.2"
+version = "0.0.3"
 description = "Internal Python SDK for the Flow blockchain with updated dependencies and Python 3.13 support"
 authors = ["Janez Podhostnik <janez.podhostnik@gmail.com>"]
 license = "MIT"
@@ -10,7 +10,7 @@ packages = [{include = "magic_flow_python", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-betterproto = "^2.0.0b7"
+betterproto2 = "^0.9.0"
 grpcio-tools = "^1.65"
 ecdsa = "^v0.19"
 rlp = "^4.0"
@@ -27,6 +27,7 @@ mkdocs = "^1.6"
 mkdocs-material = "^9.6"
 mkdocstrings = "^0.30"
 coverage = "^7.10"
+betterproto2-compiler = "^0.9.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
