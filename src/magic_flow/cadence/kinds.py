@@ -1,9 +1,9 @@
 from abc import ABCMeta, ABC
 from typing import Optional
 
-from magic_flow_python.cadence import Kind
-import magic_flow_python.cadence.constants as c
-from magic_flow_python.cadence.decode import decode, add_cadence_kind_decoder
+from magic_flow.cadence import Kind
+import magic_flow.cadence.constants as c
+from magic_flow.cadence.decode import decode, add_cadence_kind_decoder
 
 
 class OptionalKind(Kind):

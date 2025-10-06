@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from magic_flow_python import SignAlgo
+from magic_flow import SignAlgo
 
 
 class TestHashAlgo(TestCase):

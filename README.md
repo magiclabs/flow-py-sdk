@@ -38,7 +38,7 @@ poetry add magic-flow
 
 ```python
 import asyncio
-from magic_flow_python.client import flow_client
+from magic_flow.client import flow_client
 
 async def main():
     async with flow_client(host="127.0.0.1", port=3569) as client:

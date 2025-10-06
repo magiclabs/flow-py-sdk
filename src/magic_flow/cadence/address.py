@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from magic_flow_python.cadence.value import Value
-import magic_flow_python.cadence.constants as c
+from magic_flow.cadence.value import Value
+import magic_flow.cadence.constants as c
 
-from magic_flow_python.exceptions import NotAddressError
+from magic_flow.exceptions import NotAddressError
 
 
 class Address(Value):

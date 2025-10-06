@@ -1,4 +1,4 @@
-from magic_flow_python import flow_client, ProposalKey, Tx, cadence
+from magic_flow import flow_client, ProposalKey, Tx, cadence
 from examples.common import Example, Config
 from examples.common.utils import random_account
 

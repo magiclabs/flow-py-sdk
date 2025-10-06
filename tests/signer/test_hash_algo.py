@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from magic_flow_python import HashAlgo
+from magic_flow import HashAlgo
 
 
 class TestHashAlgo(TestCase):

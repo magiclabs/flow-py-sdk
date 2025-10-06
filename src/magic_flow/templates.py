@@ -1,8 +1,8 @@
 from typing import Annotated
 
-import magic_flow_python.cadence as cadence
-from magic_flow_python.account_key import AccountKey
-from magic_flow_python.tx import Tx, ProposalKey
+import magic_flow.cadence as cadence
+from magic_flow.account_key import AccountKey
+from magic_flow.tx import Tx, ProposalKey
 
 
 def create_account_template(

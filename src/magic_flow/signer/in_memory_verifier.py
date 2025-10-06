@@ -2,9 +2,9 @@ from typing import Optional
 
 import ecdsa
 
-from magic_flow_python.signer.hash_algo import HashAlgo
-from magic_flow_python.signer.sign_algo import SignAlgo
-from magic_flow_python.signer.verifier import Verifier
+from magic_flow.signer.hash_algo import HashAlgo
+from magic_flow.signer.sign_algo import SignAlgo
+from magic_flow.signer.verifier import Verifier
 
 
 class InMemoryVerifier(Verifier):

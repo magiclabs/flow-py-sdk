@@ -2,8 +2,8 @@ import json
 import logging
 from pathlib import Path
 
-from magic_flow_python.cadence import Address
-from magic_flow_python.signer import InMemorySigner, HashAlgo, SignAlgo
+from magic_flow.cadence import Address
+from magic_flow.signer import InMemorySigner, HashAlgo, SignAlgo
 
 log = logging.getLogger(__name__)
 

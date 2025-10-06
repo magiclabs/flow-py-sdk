@@ -2,8 +2,8 @@
 
 ## Signer Base Class
 
-::: magic_flow_python.Signer
+::: magic_flow.Signer
 
 ## In Memory signer Implementation
 
-::: magic_flow_python.InMemorySigner
+::: magic_flow.InMemorySigner

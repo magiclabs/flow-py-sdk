@@ -24,7 +24,7 @@ poetry add magic-flow
 ### Importing the Library
 
 ```sh
-import magic_flow_python
+import magic_flow
 ```
 
 ## Running examples
@@ -74,9 +74,8 @@ valid block produced.
 
 This example depicts ways to get the latest block as well as any other block by height or ID:
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/block_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/block_examples.py)
+  \*\*
 
 You can use the `GetLatestBlock` method to fetch the latest sealed or unsealed block:
 
@@ -159,9 +158,8 @@ An account includes the following data:
 
 Example depicts ways to get an account at the latest block and at a specific block height:
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
+  \*\*
 
 Get an account using its address.
 
@@ -244,17 +242,16 @@ transaction to the network.
 📖 **Transaction status** represents the state of transaction in the blockchain. Status can change until is finalized.
 
 | Status    | Final | Description                                                              |
-|-----------|-------|--------------------------------------------------------------------------|
-| UNKNOWN   | ❌     | The transaction has not yet been seen by the network                     |
-| PENDING   | ❌     | The transaction has not yet been included in a block                     |
-| FINALIZED | ❌     | The transaction has been included in a block                             |
-| EXECUTED  | ❌     | The transaction has been executed but the result has not yet been sealed |
-| SEALED    | ✅     | The transaction has been executed and the result is sealed in a block    |
-| EXPIRED   | ✅     | The transaction reference block is outdated before being executed        |
+| --------- | ----- | ------------------------------------------------------------------------ |
+| UNKNOWN   | ❌    | The transaction has not yet been seen by the network                     |
+| PENDING   | ❌    | The transaction has not yet been included in a block                     |
+| FINALIZED | ❌    | The transaction has been included in a block                             |
+| EXECUTED  | ❌    | The transaction has been executed but the result has not yet been sealed |
+| SEALED    | ✅    | The transaction has been executed and the result is sealed in a block    |
+| EXPIRED   | ✅    | The transaction reference block is outdated before being executed        |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -331,9 +328,8 @@ in [this document](https://docs.onflow.org/cadence/language/core-events/).
 
 Example depicts ways to get events within block range or by block IDs:
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/events_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/events_examples.py)
+  \*\*
 
 This example shows how to retrieve events by name in the block height range Class. In this example, an account is
 created and then we try to get "AccountCreated" event.
@@ -399,7 +395,7 @@ async def run(self, ctx: Config):
         tx = Tx(
             code=f"""
             import EventDemo from {address.hex_with_prefix()}
-            
+
             transaction() {{
                 prepare() {{
                     EventDemo.add(1, 6)
@@ -451,7 +447,7 @@ event value: dfc8c1ea51279ddc74c16ed7644361dbe4828181d56497a4ebb18a6bbf0fd574
 
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130"/>](./api_docs/client.md#collections)
 
-Retrieve a batch of transactions that have been included in the same block, known as ***collections***. Collections are
+Retrieve a batch of transactions that have been included in the same block, known as **_collections_**. Collections are
 used to improve consensus throughput by increasing the number of transactions per block and they act as a link between a
 block and a transaction.
 
@@ -459,9 +455,8 @@ block and a transaction.
 
 #### Examples
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/collections_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/collections_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -504,9 +499,8 @@ properties.
 
 📖 **Block height** expresses the height of the block in the chain.
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/scripts_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/scripts_examples.py)
+  \*\*
 
 ```
 // simple script
@@ -715,9 +709,8 @@ transaction(greeting: String) {
 }
 ```
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 transaction = Tx(
@@ -819,12 +812,11 @@ transactions) and have different payer account than proposer. We will explore ad
 - Proposal key must have full signing weight.
 
 | Account | Key ID | Weight |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | `0x01`  | 1      | 1.0    |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -869,13 +861,12 @@ async def run(self, ctx: Config):
 - Each key has weight 0.5, so two signatures are required.
 
 | Account | Key ID | Weight |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | `0x01`  | 1      | 0.5    |
 | `0x01`  | 2      | 0.5    |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -926,16 +917,15 @@ async def run(self, ctx: Config):
 - Payer is a separate account (`0x02`).
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
-    - Account `0x02` must sign last since it is the payer.
+  - Account `0x02` must sign last since it is the payer.
 
 | Account | Key ID | Weight |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | `0x01`  | 1      | 1.0    |
 | `0x02`  | 3      | 1.0    |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/trasnactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/trasnactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -989,17 +979,16 @@ async def run(self, ctx: Config):
 - Payer is a separate account (`0x02`).
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
-    - Account `0x02` must sign last since it is the payer.
+  - Account `0x02` must sign last since it is the payer.
 - Account `0x02` is also an authorizer to show how to include two AuthAccounts into an transaction
 
 | Account | Key ID | Weight |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | `0x01`  | 1      | 1.0    |
 | `0x02`  | 3      | 1.0    |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -1053,19 +1042,18 @@ async def run(self, ctx: Config):
 - Payer is a separate account (`0x02`).
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
-    - Account `0x02` must sign last since it is the payer.
+  - Account `0x02` must sign last since it is the payer.
 - Both accounts must sign twice (once with each of their keys).
 
 | Account | Key ID | Weight |
-|---------|--------|--------|
+| ------- | ------ | ------ |
 | `0x01`  | 1      | 0.5    |
 | `0x01`  | 2      | 0.5    |
 | `0x02`  | 3      | 0.5    |
 | `0x02`  | 4      | 0.5    |
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -1132,9 +1120,8 @@ async def run(self, ctx: Config):
 Signing and verifying user messages can be done by using `Signer.sign_user_message`. Verifying that an account (via its
 owners keys) has been signed can be done with `utils.verify_user_signature`
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/user_message_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/user_message_examples.py)
+  \*\*
 
 Short sample:
 
@@ -1176,9 +1163,8 @@ After a transaction has been [built](#build-transactions) and [signed](#sign-tra
 blockchain where it will be executed. If sending was successful you can
 then [retrieve the transaction result](#get-transactions).
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
+  \*\*
 
 ```python
 async def run(self, ctx: Config):
@@ -1213,9 +1199,8 @@ async def run(self, ctx: Config):
 
 ### Create Accounts
 
-*
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
-**
+- \*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
+  \*\*
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship
 between public keys and accounts, it's not possible to derive a new account address from a public key offline.

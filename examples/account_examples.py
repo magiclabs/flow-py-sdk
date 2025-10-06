@@ -1,4 +1,4 @@
-from magic_flow_python import (
+from magic_flow import (
     flow_client,
     AccountKey,
     ProposalKey,

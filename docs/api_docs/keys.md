@@ -2,4 +2,4 @@
 
 ## Generate new keys
 
-::: magic_flow_python.AccountKey.from_seed
+::: magic_flow.AccountKey.from_seed

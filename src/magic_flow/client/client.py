@@ -10,15 +10,15 @@ from grpclib.config import Configuration
 from grpclib.encoding.base import CodecBase, StatusDetailsCodecBase
 from grpclib.metadata import Deadline
 
-from magic_flow_python import cadence
-from magic_flow_python.cadence import Value, cadence_object_hook, encode_arguments
-from magic_flow_python.client import entities
-from magic_flow_python.proto.flow.access import (
+from magic_flow import cadence
+from magic_flow.cadence import Value, cadence_object_hook, encode_arguments
+from magic_flow.client import entities
+from magic_flow.proto.flow.access import (
     AccessApiStub,
     PingResponse,
 )
-from magic_flow_python.script import Script
-from magic_flow_python.tx import Tx, TransactionStatus
+from magic_flow.script import Script
+from magic_flow.tx import Tx, TransactionStatus
 
 log = logging.getLogger(__name__)
 

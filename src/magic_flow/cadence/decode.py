@@ -1,9 +1,9 @@
 from typing import Any, Callable, Type, Union
 
-from magic_flow_python.cadence.value import Value
-from magic_flow_python.cadence.kind import Kind
+from magic_flow.cadence.value import Value
+from magic_flow.cadence.kind import Kind
 import logging
-import magic_flow_python.cadence.constants as c
+import magic_flow.cadence.constants as c
 
 _cadence_decoders: dict[str, Callable[[Any], Value]] = {}
 _cadence_kind_decoders: dict[str, Callable[[Any], Kind]] = {}

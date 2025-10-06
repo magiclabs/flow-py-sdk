@@ -3,10 +3,10 @@ import logging
 from datetime import datetime
 from typing import Dict, List
 
-from magic_flow_python import cadence
-from magic_flow_python.account_key import AccountKey
-from magic_flow_python.cadence import cadence_object_hook
-from magic_flow_python.proto.flow import entities, access
+from magic_flow import cadence
+from magic_flow.account_key import AccountKey
+from magic_flow.cadence import cadence_object_hook
+from magic_flow.proto.flow import entities, access
 
 
 class Account(object):

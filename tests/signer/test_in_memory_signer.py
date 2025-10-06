@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import ecdsa
 
-from magic_flow_python import InMemorySigner, SignAlgo, HashAlgo
+from magic_flow import InMemorySigner, SignAlgo, HashAlgo
 
 
 class TestInMemorySigner(TestCase):

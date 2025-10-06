@@ -1,5 +1,5 @@
 from examples.common import Example, Config
-from magic_flow_python import flow_client
+from magic_flow import flow_client
 
 
 class CreateClientExample(Example):

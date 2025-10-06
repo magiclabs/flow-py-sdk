@@ -5,10 +5,10 @@ from ecdsa.util import randrange_from_seed__trytryagain
 
 import rlp
 
-from magic_flow_python import cadence
-from magic_flow_python.frlp import rlp_encode_uint64
-from magic_flow_python.proto.flow import entities
-from magic_flow_python.signer import SignAlgo, HashAlgo, in_memory_signer
+from magic_flow import cadence
+from magic_flow.frlp import rlp_encode_uint64
+from magic_flow.proto.flow import entities
+from magic_flow.signer import SignAlgo, HashAlgo, in_memory_signer
 
 
 class AccountKey(object):

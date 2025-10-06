@@ -3,7 +3,7 @@ from typing import Annotated
 import ecdsa
 
 from examples.common.config import Config
-from magic_flow_python import (
+from magic_flow import (
     cadence,
     AccessAPI,
     SignAlgo,

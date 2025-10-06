@@ -3,8 +3,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TypeVar, Type, Optional
 
-import magic_flow_python.cadence.constants as c
-from magic_flow_python.exceptions import CadenceIncorrectTypeError
+import magic_flow.cadence.constants as c
+from magic_flow.exceptions import CadenceIncorrectTypeError
 
 
 class Kind(ABC, object):

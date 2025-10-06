@@ -1,6 +1,6 @@
 from examples.common import Example, Config
 from examples.common.utils import random_account_with_weights
-from magic_flow_python import (
+from magic_flow import (
     flow_client,
     AccountKey,
     utils,

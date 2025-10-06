@@ -7,11 +7,11 @@ from typing import (
     Type as pyType,
 )
 
-import magic_flow_python.cadence.constants as c
-from magic_flow_python.cadence.kind import Kind
-from magic_flow_python.cadence.address import Address
-from magic_flow_python.cadence.decode import decode, add_cadence_decoder
-from magic_flow_python.cadence.value import Value
+import magic_flow.cadence.constants as c
+from magic_flow.cadence.kind import Kind
+from magic_flow.cadence.address import Address
+from magic_flow.cadence.decode import decode, add_cadence_decoder
+from magic_flow.cadence.value import Value
 
 
 class Void(Value):
