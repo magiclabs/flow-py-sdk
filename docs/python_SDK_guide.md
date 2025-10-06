@@ -12,19 +12,19 @@ The library client specifications can be found here:
 ### Installing
 
 ```sh
-pip install flow-py-sdk
+pip install magic-flow
 ```
 
 or
 
 ```sh
-poetry add flow-py-sdk
+poetry add magic-flow
 ```
 
 ### Importing the Library
 
 ```sh
-import flow_py_sdk
+import magic_flow_python
 ```
 
 ## Running examples
@@ -75,7 +75,7 @@ valid block produced.
 This example depicts ways to get the latest block as well as any other block by height or ID:
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/block_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/block_examples.py)
 **
 
 You can use the `GetLatestBlock` method to fetch the latest sealed or unsealed block:
@@ -160,7 +160,7 @@ An account includes the following data:
 Example depicts ways to get an account at the latest block and at a specific block height:
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/account_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
 **
 
 Get an account using its address.
@@ -253,7 +253,7 @@ transaction to the network.
 | EXPIRED   | ✅     | The transaction reference block is outdated before being executed        |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -332,7 +332,7 @@ in [this document](https://docs.onflow.org/cadence/language/core-events/).
 Example depicts ways to get events within block range or by block IDs:
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/events_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/events_examples.py)
 **
 
 This example shows how to retrieve events by name in the block height range Class. In this example, an account is
@@ -460,7 +460,7 @@ block and a transaction.
 #### Examples
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/collections_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/collections_examples.py)
 **
 
 ```python
@@ -505,7 +505,7 @@ properties.
 📖 **Block height** expresses the height of the block in the chain.
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/scripts_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/scripts_examples.py)
 **
 
 ```
@@ -716,7 +716,7 @@ transaction(greeting: String) {
 ```
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -823,7 +823,7 @@ transactions) and have different payer account than proposer. We will explore ad
 | `0x01`  | 1      | 1.0    |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -874,7 +874,7 @@ async def run(self, ctx: Config):
 | `0x01`  | 2      | 0.5    |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -934,7 +934,7 @@ async def run(self, ctx: Config):
 | `0x02`  | 3      | 1.0    |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/trasnactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/trasnactions_examples.py)
 **
 
 ```python
@@ -998,7 +998,7 @@ async def run(self, ctx: Config):
 | `0x02`  | 3      | 1.0    |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -1064,7 +1064,7 @@ async def run(self, ctx: Config):
 | `0x02`  | 4      | 0.5    |
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -1133,7 +1133,7 @@ Signing and verifying user messages can be done by using `Signer.sign_user_messa
 owners keys) has been signed can be done with `utils.verify_user_signature`
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/user_message_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/user_message_examples.py)
 **
 
 Short sample:
@@ -1177,7 +1177,7 @@ blockchain where it will be executed. If sending was successful you can
 then [retrieve the transaction result](#get-transactions).
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/transactions_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/transactions_examples.py)
 **
 
 ```python
@@ -1214,7 +1214,7 @@ async def run(self, ctx: Config):
 ### Create Accounts
 
 *
-*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/flow-py-sdk/blob/master/examples/account_examples.py)
+*[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130"/>](https://github.com/janezpodhostnik/magic-flow/blob/master/examples/account_examples.py)
 **
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship

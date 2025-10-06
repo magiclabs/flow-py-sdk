@@ -3,38 +3,38 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TypeVar, Type, Optional
 
-import flow_py_sdk.cadence.constants as c
-from flow_py_sdk.exceptions import CadenceIncorrectTypeError
+import magic_flow_python.cadence.constants as c
+from magic_flow_python.exceptions import CadenceIncorrectTypeError
 
 
-class Value(ABC, object):
+class Kind(ABC, object):
     def __init__(self) -> None:
         super().__init__()
 
     def encode(self) -> dict:
-        return {c.typeKey: self.type_str()} | self.encode_value()
+        return {c.kindKey: self.kind_str()} | self.encode_kind()
 
-    def as_type(self, t: Type[TValue]) -> Optional[TValue]:
+    def as_kind(self, t: Type[TValue]) -> Optional[TValue]:
         if isinstance(self, t):
             return self
-        raise CadenceIncorrectTypeError(f"Value {self} is not of type {t}")
+        raise CadenceIncorrectTypeError(f"Value {self} is not of kind {t}")
 
     @abstractmethod
-    def encode_value(self) -> dict:
+    def encode_kind(self) -> dict:
         pass
 
     @classmethod
     @abstractmethod
-    def decode(cls, value) -> "Value":
+    def decode(cls, value) -> "Kind":
         pass
 
     @classmethod
     @abstractmethod
-    def type_str(cls) -> str:
+    def kind_str(cls) -> str:
         pass
 
     def __eq__(self, other):
-        if isinstance(other, Value):
+        if isinstance(other, Kind):
             return str(self) == str(other)
         return NotImplemented
 
@@ -43,4 +43,4 @@ class Value(ABC, object):
         return hash(str(self))
 
 
-TValue = TypeVar("TValue", bound=Value)
+TValue = TypeVar("TValue", bound=Kind)

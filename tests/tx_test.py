@@ -1,7 +1,7 @@
 import unittest
 
-from flow_py_sdk.cadence import Address, String, Int
-from flow_py_sdk.tx import Tx, TxSignature, ProposalKey
+from magic_flow_python.cadence import Address, String, Int
+from magic_flow_python.tx import Tx, TxSignature, ProposalKey
 
 
 class TestTx(unittest.TestCase):

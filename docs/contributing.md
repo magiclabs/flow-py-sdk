@@ -2,7 +2,7 @@
 
 Any contributions are very welcome. 
 
-All bug reports, suggestions, ideas, comments are very useful for the integrity and continual development of `flow-py-sdk`. All of those can be reported as issues [here](https://github.com/janezpodhostnik/flow-py-sdk/issues).
+All bug reports, suggestions, ideas, comments are very useful for the integrity and continual development of `magic-flow`. All of those can be reported as issues [here](https://github.com/janezpodhostnik/magic-flow/issues).
 
 If you would like to contribute to the code, the best place to start is to run the [examples](./examples.md) locally. After that your environment will be set up for development.
 

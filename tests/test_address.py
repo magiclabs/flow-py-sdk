@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from flow_py_sdk.cadence import Address
-from flow_py_sdk.exceptions import NotAddressError
+from magic_flow_python.cadence import Address
+from magic_flow_python.exceptions import NotAddressError
 
 
 class TestAddress(TestCase):

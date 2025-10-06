@@ -1,6 +1,6 @@
 # Examples
 
-Examples are meant to illustrate usage of `flow-py-sdk`. They can be found [here](https://github.com/janezpodhostnik/flow-py-sdk/tree/master/examples)
+Examples are meant to illustrate usage of `magic-flow`. They can be found [here](https://github.com/janezpodhostnik/magic-flow/tree/master/examples)
 
 
 ## Running The examples
@@ -10,11 +10,11 @@ In case you want to debug the examples, or you just want to see them in action y
 ### 1. Prerequisites
 
 - `flow-cli` for starting the emulator ([step-by-step based installation instructions based on your OS](https://github.com/onflow/flow-cli#flow-cli))
-- a checkout of `flow-py-sdk`
+- a checkout of `magic-flow`
 - python 3.9 or higher
 - [poetry](https://python-poetry.org/)
 
-The first step is to install the dependencies of `flow-py-sdk` with **poetry**. To do this run the following command on the root of the checkout.
+The first step is to install the dependencies of `magic-flow` with **poetry**. To do this run the following command on the root of the checkout.
 
 ```sh
 poetry install

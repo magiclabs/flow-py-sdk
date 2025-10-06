@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from abc import ABCMeta
 
-import flow_py_sdk.cadence.constants as c
-from flow_py_sdk.cadence.decode import decode, add_cadence_decoder
-from flow_py_sdk.cadence.value import Value
+import magic_flow_python.cadence.constants as c
+from magic_flow_python.cadence.decode import decode, add_cadence_decoder
+from magic_flow_python.cadence.value import Value
 
 
 class Composite(Value, metaclass=ABCMeta):

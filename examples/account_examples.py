@@ -1,4 +1,4 @@
-from flow_py_sdk import (
+from magic_flow_python import (
     flow_client,
     AccountKey,
     ProposalKey,

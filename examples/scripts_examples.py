@@ -1,4 +1,4 @@
-from flow_py_sdk import flow_client, cadence, Script
+from magic_flow_python import flow_client, cadence, Script
 from examples.common import Example, Config
 
 

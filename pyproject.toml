@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "flow-sdk"
+name = "magic-flow"
 version = "0.0.1"
 description = "Internal Python SDK for the Flow blockchain with updated dependencies and Python 3.13 support"
 authors = ["Janez Podhostnik <janez.podhostnik@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/magiclabs/flow-py-sdk"
-packages = [{include = "flow_py_sdk", from = "src"}]
+repository = "https://github.com/magiclabs/magic-flow-python"
+packages = [{include = "magic_flow_python", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

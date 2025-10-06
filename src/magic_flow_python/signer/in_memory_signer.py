@@ -2,11 +2,11 @@ from typing import Optional
 
 import ecdsa
 
-from flow_py_sdk.signer.hash_algo import HashAlgo
-from flow_py_sdk.signer.in_memory_verifier import InMemoryVerifier
-from flow_py_sdk.signer.sign_algo import SignAlgo
-from flow_py_sdk.signer.signer import Signer
-from flow_py_sdk.signer.verifier import Verifier
+from magic_flow_python.signer.hash_algo import HashAlgo
+from magic_flow_python.signer.in_memory_verifier import InMemoryVerifier
+from magic_flow_python.signer.sign_algo import SignAlgo
+from magic_flow_python.signer.signer import Signer
+from magic_flow_python.signer.verifier import Verifier
 
 
 class InMemorySigner(Signer, Verifier):

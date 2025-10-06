@@ -1,5 +1,5 @@
 import ecdsa
-from flow_py_sdk import flow_client, AccountKey, signer
+from magic_flow_python import flow_client, AccountKey, signer
 from ecdsa.keys import SigningKey
 from examples.common import Example, Config
 

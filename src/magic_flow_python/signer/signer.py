@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from flow_py_sdk.exceptions import PySDKError
+from magic_flow_python.exceptions import PySDKError
 
 DomainTagLength = 32
 

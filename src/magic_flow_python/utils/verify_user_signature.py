@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from flow_py_sdk import cadence
-from flow_py_sdk.exceptions import PySDKError
-from flow_py_sdk.templates import TransactionTemplates
-from flow_py_sdk.client import AccessAPI
-from flow_py_sdk.script import Script
+from magic_flow_python import cadence
+from magic_flow_python.exceptions import PySDKError
+from magic_flow_python.templates import TransactionTemplates
+from magic_flow_python.client import AccessAPI
+from magic_flow_python.script import Script
 
 
 @dataclass

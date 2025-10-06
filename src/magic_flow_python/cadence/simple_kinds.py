@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from abc import ABCMeta
 
-import flow_py_sdk.cadence.constants as c
-from flow_py_sdk.cadence.decode import add_cadence_kind_decoder
-from flow_py_sdk.cadence.kind import Kind
+import magic_flow_python.cadence.constants as c
+from magic_flow_python.cadence.decode import add_cadence_kind_decoder
+from magic_flow_python.cadence.kind import Kind
 
 
 class SimpleKind(Kind, metaclass=ABCMeta):

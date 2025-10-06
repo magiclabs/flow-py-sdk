@@ -1,7 +1,7 @@
 import json
 import unittest
 from dataclasses import dataclass
-from flow_py_sdk import cadence
+from magic_flow_python import cadence
 
 
 @dataclass

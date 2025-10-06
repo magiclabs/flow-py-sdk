@@ -1,8 +1,8 @@
 from __future__ import annotations
 import logging
 
-from flow_py_sdk.cadence.types import Value
-from flow_py_sdk.exceptions import NotCadenceValueError
+from magic_flow_python.cadence.types import Value
+from magic_flow_python.exceptions import NotCadenceValueError
 
 log = logging.getLogger(__name__)
 

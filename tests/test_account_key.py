@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from flow_py_sdk import AccountKey, SignAlgo, HashAlgo
-from flow_py_sdk.proto.flow.entities import AccountKey as ProtoAccountKey
+from magic_flow_python import AccountKey, SignAlgo, HashAlgo
+from magic_flow_python.proto.flow.entities import AccountKey as ProtoAccountKey
 
 
 class TestAccountKey(TestCase):

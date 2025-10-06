@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from flow_py_sdk import Script, cadence, exceptions
+from magic_flow_python import Script, cadence, exceptions
 
 
 class TestScript(TestCase):

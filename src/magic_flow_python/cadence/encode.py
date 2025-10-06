@@ -1,8 +1,8 @@
 import json
 from typing import Any, Optional as Optional, Tuple, Callable
 
-from flow_py_sdk.cadence.kind import Kind
-from flow_py_sdk.cadence.types import Value
+from magic_flow_python.cadence.kind import Kind
+from magic_flow_python.cadence.types import Value
 
 
 class CadenceJsonEncoder(json.JSONEncoder):

@@ -3,11 +3,11 @@ from enum import Enum
 
 import rlp
 
-from flow_py_sdk.cadence import Value, Address, encode_arguments
-from flow_py_sdk.exceptions import NotCadenceValueError
-from flow_py_sdk.frlp import rlp_encode_uint64
-from flow_py_sdk.proto.flow import entities
-from flow_py_sdk.signer import Signer
+from magic_flow_python.cadence import Value, Address, encode_arguments
+from magic_flow_python.exceptions import NotCadenceValueError
+from magic_flow_python.frlp import rlp_encode_uint64
+from magic_flow_python.proto.flow import entities
+from magic_flow_python.signer import Signer
 
 log = logging.getLogger(__name__)
 

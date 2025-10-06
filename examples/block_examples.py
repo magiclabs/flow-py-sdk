@@ -1,4 +1,4 @@
-from flow_py_sdk import flow_client
+from magic_flow_python import flow_client
 from examples.common import Example, Config
 
 
