@@ -217,6 +217,57 @@ class Transaction(object):
             envelope_signatures=proto.envelope_signatures,
         )
 
+    def to_proto(self) -> entities.Transaction:
+        """Convert this Transaction to a protobuf Transaction message."""
+        from magic_flow.proto.flow.entities import Transaction as ProtoTransaction
+        from magic_flow.proto.flow.entities import (
+            TransactionProposalKey as ProtoTransactionProposalKey,
+        )
+        from magic_flow.proto.flow.entities import TransactionSignature as ProtoTransactionSignature
+
+        # Convert proposal key
+        proto_proposal_key = None
+        if self.proposal_key:
+            proto_proposal_key = ProtoTransactionProposalKey(
+                address=self.proposal_key.address,
+                key_id=self.proposal_key.key_id,
+                sequence_number=self.proposal_key.sequence_number,
+            )
+
+        # Convert payload signatures
+        proto_payload_signatures = []
+        for sig in self.payload_signatures:
+            proto_payload_signatures.append(
+                ProtoTransactionSignature(
+                    address=sig.address,
+                    key_id=sig.key_id,
+                    signature=sig.signature,
+                )
+            )
+
+        # Convert envelope signatures
+        proto_envelope_signatures = []
+        for sig in self.envelope_signatures:
+            proto_envelope_signatures.append(
+                ProtoTransactionSignature(
+                    address=sig.address,
+                    key_id=sig.key_id,
+                    signature=sig.signature,
+                )
+            )
+
+        return ProtoTransaction(
+            script=self.script,
+            arguments=self.arguments,
+            reference_block_id=self.reference_block_id,
+            gas_limit=self.gas_limit,
+            proposal_key=proto_proposal_key,
+            payer=self.payer,
+            authorizers=self.authorizers,
+            payload_signatures=proto_payload_signatures,
+            envelope_signatures=proto_envelope_signatures,
+        )
+
 
 class TransactionProposalKey(object):
     def __init__(self, address: bytes, key_id: int, sequence_number: int) -> None:
