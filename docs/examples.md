@@ -2,7 +2,6 @@
 
 Examples are meant to illustrate usage of `magic-flow`. They can be found [here](https://github.com/janezpodhostnik/magic-flow/tree/master/examples)
 
-
 ## Running The examples
 
 In case you want to debug the examples, or you just want to see them in action you can use the following steps.
