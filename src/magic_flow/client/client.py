@@ -519,9 +519,9 @@ class AccessAPI(AccessApiStub):
         -------
         entities.TransactionResultResponse
         """
-        from magic_flow.proto.flow.access import GetTransactionResultRequest
+        from magic_flow.proto.flow.access import GetTransactionRequest
 
-        message = GetTransactionResultRequest(id=id)
+        message = GetTransactionRequest(id=id)
         response = await super().get_transaction_result(message)
         return entities.TransactionResultResponse.from_proto(response, id=id)
 
