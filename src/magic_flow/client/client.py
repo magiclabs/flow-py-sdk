@@ -500,9 +500,7 @@ class AccessAPI(AccessApiStub):
         """
         from magic_flow.proto.flow.access import SendTransactionRequest
 
-        message = SendTransactionRequest(
-            transaction=transaction.to_proto() if transaction else None
-        )
+        message = SendTransactionRequest(transaction=transaction)
         response = await super().send_transaction(message)
         return entities.SendTransactionResponse.from_proto(response)
 
