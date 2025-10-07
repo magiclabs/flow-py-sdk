@@ -195,7 +195,10 @@ class AccessAPI(AccessApiStub):
             Return requested transaction.
 
         """
-        response = await super().get_transaction(id=id)
+        from magic_flow.proto.flow.access import GetTransactionRequest
+
+        message = GetTransactionRequest(id=id)
+        response = await super().get_transaction(message)
         return entities.Transaction.from_proto(response.transaction)
 
     async def get_account(
@@ -495,7 +498,12 @@ class AccessAPI(AccessApiStub):
         -------
         entities.SendTransactionResponse
         """
-        response = await super().send_transaction(transaction=transaction)
+        from magic_flow.proto.flow.access import SendTransactionRequest
+
+        message = SendTransactionRequest(
+            transaction=transaction.to_proto() if transaction else None
+        )
+        response = await super().send_transaction(message)
         return entities.SendTransactionResponse.from_proto(response)
 
     async def get_transaction_result(
@@ -513,7 +521,10 @@ class AccessAPI(AccessApiStub):
         -------
         entities.TransactionResultResponse
         """
-        response = await super().get_transaction_result(id=id)
+        from magic_flow.proto.flow.access import GetTransactionResultRequest
+
+        message = GetTransactionResultRequest(id=id)
+        response = await super().get_transaction_result(message)
         return entities.TransactionResultResponse.from_proto(response, id=id)
 
     async def execute_transaction(
