@@ -121,7 +121,9 @@ class AccessAPI(AccessApiStub):
             Return requested block.
 
         """
-        response = await super(AccessAPI, self).get_latest_block(is_sealed=is_sealed)
+        from magic_flow.proto.flow.access import GetLatestBlockRequest
+        message = GetLatestBlockRequest(is_sealed=is_sealed)
+        response = await super().get_latest_block(message)
         return entities.Block.from_proto(response.block)
 
     async def get_block_by_i_d(self, *, id: bytes = b"") -> entities.Block:
@@ -214,8 +216,10 @@ class AccessAPI(AccessApiStub):
             Return requested account.
 
         """
-        address = cadence.Address.convert_to_bytes(address)
-        response = await super().get_account(address=address)
+        from magic_flow.proto.flow.access import GetAccountRequest
+        address_bytes = cadence.Address.convert_to_bytes(address)
+        message = GetAccountRequest(address=address_bytes)
+        response = await super().get_account(message)
         return entities.Account.from_proto(response.account)
 
     async def get_account_at_latest_block(
