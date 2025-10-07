@@ -32,9 +32,10 @@ class AccessAPI(AccessApiStub):
         deadline: Optional["Deadline"] = None,
         metadata=None,
     ) -> None:
-        super().__init__(
-            channel=channel, timeout=timeout, deadline=deadline, metadata=metadata
-        )
+        super().__init__(channel=channel)
+        self.timeout = timeout
+        self.deadline = deadline
+        self.metadata = metadata
 
     async def __aenter__(self) -> "AccessAPI":
         return self
@@ -45,7 +46,7 @@ class AccessAPI(AccessApiStub):
         exc_val: Optional[BaseException],
         exc_tb: Optional[TracebackType],
     ) -> None:
-        self.channel.close()
+        self._channel.close()
 
     async def get_latest_block_header(
         self, *, is_sealed: bool = False
