@@ -10,9 +10,7 @@ from magic_flow.signer.verifier import Verifier
 
 
 class InMemorySigner(Signer, Verifier):
-    def __init__(
-        self, *, hash_algo: HashAlgo, sign_algo: SignAlgo, private_key_hex: str
-    ) -> None:
+    def __init__(self, *, hash_algo: HashAlgo, sign_algo: SignAlgo, private_key_hex: str) -> None:
         super().__init__()
         self.hash_algo = hash_algo
         self.key = ecdsa.SigningKey.from_string(

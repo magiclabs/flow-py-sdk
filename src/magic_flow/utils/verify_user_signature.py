@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
 from magic_flow import cadence
-from magic_flow.exceptions import PySDKError
-from magic_flow.templates import TransactionTemplates
 from magic_flow.client import AccessAPI
+from magic_flow.exceptions import PySDKError
 from magic_flow.script import Script
+from magic_flow.templates import TransactionTemplates
 
 
 @dataclass
@@ -26,9 +26,7 @@ async def verify_user_signature(
         raise PySDKError("All signatures must be from the same address")
 
     address = cadence.Address.from_hex(composite_signatures[0].addr)
-    signatures = cadence.Array(
-        [cadence.String(x.signature) for x in composite_signatures]
-    )
+    signatures = cadence.Array([cadence.String(x.signature) for x in composite_signatures])
     key_indexes = cadence.Array([cadence.Int(x.keyId) for x in composite_signatures])
     cadence_message = cadence.String(str(message, "utf-8"))
 

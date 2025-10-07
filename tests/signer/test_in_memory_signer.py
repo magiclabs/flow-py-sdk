@@ -2,7 +2,9 @@ from unittest import TestCase
 
 import ecdsa
 
-from magic_flow import InMemorySigner, SignAlgo, HashAlgo
+from magic_flow import HashAlgo
+from magic_flow import InMemorySigner
+from magic_flow import SignAlgo
 
 
 class TestInMemorySigner(TestCase):
@@ -24,9 +26,7 @@ class TestInMemorySigner(TestCase):
                     with self.subTest(
                         f"sign_algo: {sign_algo}, hash_algo: {hash_algo}, tag: {tag}"
                     ):
-                        private_key = ecdsa.SigningKey.generate(
-                            curve=sign_algo.get_signing_curve()
-                        )
+                        private_key = ecdsa.SigningKey.generate(curve=sign_algo.get_signing_curve())
 
                         signer = InMemorySigner(
                             sign_algo=sign_algo,
@@ -45,9 +45,7 @@ class TestInMemorySigner(TestCase):
                             hasher.update(b"some_message")
                         _hash = hasher.digest()
 
-                        valid = private_key.get_verifying_key().verify_digest(
-                            signature, _hash
-                        )
+                        valid = private_key.get_verifying_key().verify_digest(signature, _hash)
 
                         self.assertTrue(valid)
 
@@ -64,9 +62,7 @@ class TestInMemorySigner(TestCase):
         for sign_algo in s:
             for hash_algo in h:
                 with self.subTest(f"sign_algo: {sign_algo}, hash_algo: {hash_algo}"):
-                    private_key = ecdsa.SigningKey.generate(
-                        curve=sign_algo.get_signing_curve()
-                    )
+                    private_key = ecdsa.SigningKey.generate(curve=sign_algo.get_signing_curve())
 
                     signer = InMemorySigner(
                         sign_algo=sign_algo,

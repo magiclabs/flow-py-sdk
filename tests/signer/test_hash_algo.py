@@ -21,9 +21,7 @@ class TestHashAlgo(TestCase):
             (
                 HashAlgo.SHA2_256,
                 "SHA2_256",
-                bytes.fromhex(
-                    "68fb87dfba69b956f4ba98b748a75a604f99b38a4f2740290037957f7e830da8"
-                ),
+                bytes.fromhex("68fb87dfba69b956f4ba98b748a75a604f99b38a4f2740290037957f7e830da8"),
             ),
             (
                 HashAlgo.SHA2_384,
@@ -35,9 +33,7 @@ class TestHashAlgo(TestCase):
             (
                 HashAlgo.SHA3_256,
                 "SHA3_256",
-                bytes.fromhex(
-                    "38effea5ab9082a2cb0dc9adfafaf88523e8f3ce74bfbeac85ffc719cc2c4677"
-                ),
+                bytes.fromhex("38effea5ab9082a2cb0dc9adfafaf88523e8f3ce74bfbeac85ffc719cc2c4677"),
             ),
             (
                 HashAlgo.SHA3_384,

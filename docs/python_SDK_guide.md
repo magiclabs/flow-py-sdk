@@ -620,7 +620,7 @@ Executing a transaction requires couple of steps:
 ## Transactions
 
 A transaction is nothing more than a signed set of data that includes script code which are instructions on how to
-mutate the network state and properties that define and limit it's execution. All these properties are explained bellow.
+mutate the network state and properties that define and limit it's execution. All these properties are explained below.
 
 📖 **Script** field is the portion of the transaction that describes the state mutation logic. On Flow, transaction
 logic is written in [Cadence](https://docs.onflow.org/cadence/). Here is an example transaction script:
@@ -803,7 +803,7 @@ async def run(self, ctx: Config):
 ```
 
 Flow supports great flexibility when it comes to transaction signing, we can define multiple authorizers (multi-sig
-transactions) and have different payer account than proposer. We will explore advanced signing scenarios bellow.
+transactions) and have different payer account than proposer. We will explore advanced signing scenarios below.
 
 ### [Single party, single signature](https://docs.onflow.org/concepts/transaction-signing/#single-party-single-signature)
 

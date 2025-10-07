@@ -1,5 +1,8 @@
-from magic_flow import flow_client, cadence, Script
-from examples.common import Example, Config
+from examples.common import Config
+from examples.common import Example
+from magic_flow import Script
+from magic_flow import cadence
+from magic_flow import flow_client
 
 
 # -------------------------------------------------------------------------
@@ -26,9 +29,7 @@ class ExecuteScriptExample(Example):
                 """
         )
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             await client.execute_script(
                 script=script
                 # , block_id
@@ -41,9 +42,7 @@ class ExecuteScriptExample(Example):
 # -------------------------------------------------------------------------
 class ExecuteScriptWithArgumentExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="S.2.", name="ExecuteScriptWithArgumentExample", sort_order=402
-        )
+        super().__init__(tag="S.2.", name="ExecuteScriptWithArgumentExample", sort_order=402)
 
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
@@ -61,9 +60,7 @@ class ExecuteScriptWithArgumentExample(Example):
             arguments=[cadence.Int(1), cadence.Int(1)],
         )
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             await client.execute_script(
                 script=script
                 # , block_id
@@ -76,9 +73,7 @@ class ExecuteScriptWithArgumentExample(Example):
 # -------------------------------------------------------------------------
 class ExecuteComplexScriptWithArgumentExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="S.3.", name="ExecuteComplexScriptWithArgumentExample", sort_order=403
-        )
+        super().__init__(tag="S.3.", name="ExecuteComplexScriptWithArgumentExample", sort_order=403)
 
     async def run(self, ctx: Config):
         script = Script(
@@ -106,9 +101,7 @@ class ExecuteComplexScriptWithArgumentExample(Example):
             arguments=[cadence.String("flow")],
         )
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             complex_script = await client.execute_script(
                 script=script
                 # , block_id

@@ -1,9 +1,12 @@
-from typing import Any, Callable, Type, Union
-
-from magic_flow.cadence.value import Value
-from magic_flow.cadence.kind import Kind
 import logging
+from typing import Any
+from typing import Callable
+from typing import Type
+from typing import Union
+
 import magic_flow.cadence.constants as c
+from magic_flow.cadence.kind import Kind
+from magic_flow.cadence.value import Value
 
 _cadence_decoders: dict[str, Callable[[Any], Value]] = {}
 _cadence_kind_decoders: dict[str, Callable[[Any], Kind]] = {}
@@ -44,16 +47,12 @@ def decode(obj: dict[Any, Any]) -> Union[Value, Kind, dict]:
 
     except KeyError as e:
         logging.error(
-            f"Unhandled key '{e}' during decode of {type(obj).__name__}. "
-            + f"Value: {obj}"
+            f"Unhandled key '{e}' during decode of {type(obj).__name__}. " + f"Value: {obj}"
         )
         raise
 
     except NotImplementedError:
-        logging.error(
-            f"Decoding not implemented for type {type(obj).__name__}. "
-            + f"Value: {obj}"
-        )
+        logging.error(f"Decoding not implemented for type {type(obj).__name__}. " + f"Value: {obj}")
         raise
 
 

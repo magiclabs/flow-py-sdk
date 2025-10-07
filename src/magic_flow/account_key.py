@@ -1,14 +1,17 @@
 from __future__ import annotations
+
 from typing import Optional
-from ecdsa import SigningKey
-from ecdsa.util import randrange_from_seed__trytryagain
 
 import rlp
+from ecdsa import SigningKey
+from ecdsa.util import randrange_from_seed__trytryagain
 
 from magic_flow import cadence
 from magic_flow.frlp import rlp_encode_uint64
 from magic_flow.proto.flow import entities
-from magic_flow.signer import SignAlgo, HashAlgo, in_memory_signer
+from magic_flow.signer import HashAlgo
+from magic_flow.signer import SignAlgo
+from magic_flow.signer import in_memory_signer
 
 
 class AccountKey(object):
@@ -74,9 +77,7 @@ class AccountKey(object):
                         [
                             (
                                 "publicKey",
-                                cadence.Array(
-                                    [cadence.UInt8(b) for b in self.public_key]
-                                ),
+                                cadence.Array([cadence.UInt8(b) for b in self.public_key]),
                             ),
                             (
                                 "signatureAlgorithm",
@@ -85,9 +86,7 @@ class AccountKey(object):
                                     [
                                         (
                                             "rawValue",
-                                            cadence.UInt8(
-                                                self.sign_algo.get_cadence_enum_value()
-                                            ),
+                                            cadence.UInt8(self.sign_algo.get_cadence_enum_value()),
                                         ),
                                     ],
                                 ),
@@ -169,16 +168,12 @@ class AccountKey(object):
         """
 
         # Generate private key using provided Seed.
-        if seed == None:
+        if seed is None:
             sk = SigningKey.generate()
             private_key = sk.to_string()
         else:
-            secexp = randrange_from_seed__trytryagain(
-                seed, sign_algo.get_signing_curve().order
-            )
-            sk = SigningKey.from_secret_exponent(
-                secexp, curve=sign_algo.get_signing_curve()
-            )
+            secexp = randrange_from_seed__trytryagain(seed, sign_algo.get_signing_curve().order)
+            sk = SigningKey.from_secret_exponent(secexp, curve=sign_algo.get_signing_curve())
             private_key = sk.to_string()
 
         # Extract public Key (verifying Key) of generated private key.

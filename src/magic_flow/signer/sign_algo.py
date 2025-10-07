@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-import ecdsa
 from enum import IntEnum
+
+import ecdsa
 
 
 class SignAlgo(IntEnum):

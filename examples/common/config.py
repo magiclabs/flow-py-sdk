@@ -3,7 +3,9 @@ import logging
 from pathlib import Path
 
 from magic_flow.cadence import Address
-from magic_flow.signer import InMemorySigner, HashAlgo, SignAlgo
+from magic_flow.signer import HashAlgo
+from magic_flow.signer import InMemorySigner
+from magic_flow.signer import SignAlgo
 
 log = logging.getLogger(__name__)
 

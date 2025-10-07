@@ -1,8 +1,11 @@
 import ecdsa
-from magic_flow import flow_client, AccountKey, signer
 from ecdsa.keys import SigningKey
-from examples.common import Example, Config
 
+from examples.common import Config
+from examples.common import Example
+from magic_flow import AccountKey
+from magic_flow import flow_client
+from magic_flow import signer
 
 # -------------------------------------------------------------------------
 # Create AccountKey Instant.
@@ -16,9 +19,7 @@ from examples.common import Example, Config
 # # -------------------------------------------------------------------------
 class CreateAccountKeyByPublicExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="A.1.", name="CreateAccountKeyByPublicExample", sort_order=801
-        )
+        super().__init__(tag="A.1.", name="CreateAccountKeyByPublicExample", sort_order=801)
 
     async def run(self, ctx: Config):
         sign_algo = ecdsa.NIST256p
@@ -29,9 +30,7 @@ class CreateAccountKeyByPublicExample(Example):
         verifying_key = secret_key.get_verifying_key()
         public_key = verifying_key.to_string()
 
-        acc_key = AccountKey(
-            public_key=public_key, sign_algo=sign_algo, hash_algo=hash_algo
-        )
+        acc_key = AccountKey(public_key=public_key, sign_algo=sign_algo, hash_algo=hash_algo)
 
         self.log.info(acc_key.__dict__)
 
@@ -48,12 +47,8 @@ class GetAccountKeyByProtoExample(Example):
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
-            account = await client.get_account(
-                address=ctx.service_account_address.bytes
-            )
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
+            account = await client.get_account(address=ctx.service_account_address.bytes)
 
 
 # # -------------------------------------------------------------------------
@@ -64,9 +59,7 @@ class GetAccountKeyByProtoExample(Example):
 
 class CreateAccountKeyBySeedExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="A.3.", name="CreateAccountKeyBySeedExample", sort_order=803
-        )
+        super().__init__(tag="A.3.", name="CreateAccountKeyBySeedExample", sort_order=803)
 
     async def run(self, ctx: Config):
         # This function return AccountKey and Signer

@@ -1,16 +1,15 @@
-from magic_flow import (
-    flow_client,
-    AccountKey,
-    ProposalKey,
-    create_account_template,
-    Tx,
-    TransactionTemplates,
-    cadence,
-    SignAlgo,
-    HashAlgo,
-)
-from examples.common import Example, Config
+from examples.common import Config
+from examples.common import Example
 from examples.common.utils import random_account
+from magic_flow import AccountKey
+from magic_flow import HashAlgo
+from magic_flow import ProposalKey
+from magic_flow import SignAlgo
+from magic_flow import TransactionTemplates
+from magic_flow import Tx
+from magic_flow import cadence
+from magic_flow import create_account_template
+from magic_flow import flow_client
 
 
 # -------------------------------------------------------------------------
@@ -27,9 +26,7 @@ class SignTransactionExample(Example):
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             account_key, _ = AccountKey.from_seed(
                 seed="dfghj dfj kjhgf hgfd lkjhgf kjhgfd sdf45678l",
                 sign_algo=SignAlgo.ECDSA_P256,
@@ -53,9 +50,7 @@ class SignTransactionExample(Example):
                     ),
                 )
                 .add_authorizers(ctx.service_account_address)
-                .with_envelope_signature(
-                    ctx.service_account_address, 0, ctx.service_account_signer
-                )
+                .with_envelope_signature(ctx.service_account_address, 0, ctx.service_account_signer)
             )
 
             await client.execute_transaction(transaction)
@@ -88,16 +83,10 @@ class DeployContract(Example):
         }
         contract_source_hex = bytes(contract["source"], "UTF-8").hex()
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
-            account_address, _, new_signer = await random_account(
-                client=client, ctx=ctx
-            )
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
+            account_address, _, new_signer = await random_account(client=client, ctx=ctx)
             latest_block = await client.get_latest_block()
-            proposer = await client.get_account_at_latest_block(
-                address=account_address.bytes
-            )
+            proposer = await client.get_account_at_latest_block(address=account_address.bytes)
             contract_name = cadence.String(contract["Name"])
             contract_code = cadence.String(contract_source_hex)
             transaction = (
@@ -149,16 +138,10 @@ class UpdateContract(Example):
         }
         contract_source_hex = bytes(contract["source"], "UTF-8").hex()
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
-            account_address, _, new_signer = await random_account(
-                client=client, ctx=ctx
-            )
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
+            account_address, _, new_signer = await random_account(client=client, ctx=ctx)
             latest_block = await client.get_latest_block()
-            proposer = await client.get_account_at_latest_block(
-                address=account_address.bytes
-            )
+            proposer = await client.get_account_at_latest_block(address=account_address.bytes)
             contract_name = cadence.String(contract["Name"])
             contract_code = cadence.String(contract_source_hex)
             transaction = (
@@ -249,16 +232,10 @@ class RemoveContract(Example):
         }
         contract_source_hex = bytes(contract["source"], "UTF-8").hex()
 
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
-            account_address, _, new_signer = await random_account(
-                client=client, ctx=ctx
-            )
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
+            account_address, _, new_signer = await random_account(client=client, ctx=ctx)
             latest_block = await client.get_latest_block()
-            proposer = await client.get_account_at_latest_block(
-                address=account_address.bytes
-            )
+            proposer = await client.get_account_at_latest_block(address=account_address.bytes)
             contract_name = cadence.String(contract["Name"])
             contract_code = cadence.String(contract_source_hex)
             transaction = (

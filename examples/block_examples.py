@@ -1,5 +1,6 @@
+from examples.common import Config
+from examples.common import Example
 from magic_flow import flow_client
-from examples.common import Example, Config
 
 
 # -------------------------------------------------------------------------
@@ -12,9 +13,7 @@ class GetBlockByIdExample(Example):
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             latest_block = await client.get_latest_block()
             block = await client.get_block_by_i_d(id=latest_block.id)
             self.log.info(f"Block ID: {block.id.hex()}")
@@ -32,9 +31,7 @@ class GetBlockByHeightExample(Example):
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             latest_block = await client.get_latest_block()
             block = await client.get_block_by_height(height=latest_block.height)
             self.log.info(f"Block ID: {block.id.hex()}")
@@ -52,9 +49,7 @@ class GetLatestBlockExample(Example):
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             block = await client.get_latest_block(is_sealed=False)
             self.log.info(f"Block ID: {block.id.hex()}")
             self.log.info(f"Block height: {block.height}")

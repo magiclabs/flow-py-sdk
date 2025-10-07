@@ -1,5 +1,6 @@
 import logging
-from abc import abstractmethod, ABCMeta
+from abc import ABCMeta
+from abc import abstractmethod
 from typing import Annotated
 
 from examples.common.config import Config

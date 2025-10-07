@@ -1,12 +1,14 @@
 import json
 import logging
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict
+from typing import List
 
 from magic_flow import cadence
 from magic_flow.account_key import AccountKey
 from magic_flow.cadence import cadence_object_hook
-from magic_flow.proto.flow import entities, access
+from magic_flow.proto.flow import access
+from magic_flow.proto.flow import entities
 
 
 class Account(object):
@@ -76,9 +78,7 @@ class CollectionGuarantee(object):
 
     @classmethod
     def from_proto(cls, proto: entities.CollectionGuarantee) -> "CollectionGuarantee":
-        return CollectionGuarantee(
-            collection_id=proto.collection_id, signatures=proto.signatures
-        )
+        return CollectionGuarantee(collection_id=proto.collection_id, signatures=proto.signatures)
 
 
 class BlockSeal(object):
@@ -153,9 +153,7 @@ class Event(object):
 
         try:
             # Attempt to decode the payload
-            self.value: cadence.Event = json.loads(
-                payload, object_hook=cadence_object_hook
-            )
+            self.value: cadence.Event = json.loads(payload, object_hook=cadence_object_hook)
         except json.JSONDecodeError as e:
             logging.error(
                 f"JSON decode error for event {event_index} with payload: {payload[:100]}... Error: {str(e)}"
@@ -227,9 +225,7 @@ class TransactionProposalKey(object):
         self.sequence_number: int = sequence_number
 
     @classmethod
-    def from_proto(
-        cls, proto: entities.TransactionProposalKey
-    ) -> "TransactionProposalKey":
+    def from_proto(cls, proto: entities.TransactionProposalKey) -> "TransactionProposalKey":
         return TransactionProposalKey(
             address=proto.address,
             key_id=proto.key_id,
@@ -314,9 +310,7 @@ class TransactionResultResponse(object):
                 event = Event.from_proto(event_proto)
                 events.append(event)
             except Exception as e:
-                logging.error(
-                    f"Failed to deserialize event {i}/{len(proto.events)}: {str(e)}"
-                )
+                logging.error(f"Failed to deserialize event {i}/{len(proto.events)}: {str(e)}")
                 raise
 
         return TransactionResultResponse(
@@ -333,7 +327,5 @@ class SendTransactionResponse(object):
         self.id: bytes = _id
 
     @classmethod
-    def from_proto(
-        cls, proto: access.SendTransactionResponse
-    ) -> "SendTransactionResponse":
+    def from_proto(cls, proto: access.SendTransactionResponse) -> "SendTransactionResponse":
         return SendTransactionResponse(_id=proto.id)

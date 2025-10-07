@@ -3,17 +3,15 @@ from typing import Annotated
 import ecdsa
 
 from examples.common.config import Config
-from magic_flow import (
-    cadence,
-    AccessAPI,
-    SignAlgo,
-    AccountKey,
-    Signer,
-    HashAlgo,
-    InMemorySigner,
-    create_account_template,
-    ProposalKey,
-)
+from magic_flow import AccessAPI
+from magic_flow import AccountKey
+from magic_flow import HashAlgo
+from magic_flow import InMemorySigner
+from magic_flow import ProposalKey
+from magic_flow import SignAlgo
+from magic_flow import Signer
+from magic_flow import cadence
+from magic_flow import create_account_template
 
 
 def random_key_pair(
@@ -95,9 +93,7 @@ async def random_account_with_weights(
     ]
 
     block = await client.get_latest_block()
-    proposer = await client.get_account_at_latest_block(
-        address=ctx.service_account_address.bytes
-    )
+    proposer = await client.get_account_at_latest_block(address=ctx.service_account_address.bytes)
 
     tx = (
         create_account_template(
@@ -108,21 +104,15 @@ async def random_account_with_weights(
             proposal_key=ProposalKey(
                 key_address=ctx.service_account_address,
                 key_id=ctx.service_account_key_id,
-                key_sequence_number=proposer.keys[
-                    ctx.service_account_key_id
-                ].sequence_number,
+                key_sequence_number=proposer.keys[ctx.service_account_key_id].sequence_number,
             ),
         )
         .add_authorizers(ctx.service_account_address)
-        .with_envelope_signature(
-            ctx.service_account_address, 0, ctx.service_account_signer
-        )
+        .with_envelope_signature(ctx.service_account_address, 0, ctx.service_account_signer)
     )
 
     result = await client.execute_transaction(tx)
-    new_addresses = [
-        e.value.address for e in result.events if e.value.id == "flow.AccountCreated"
-    ]
+    new_addresses = [e.value.address for e in result.events if e.value.id == "flow.AccountCreated"]
 
     return (
         new_addresses[0],

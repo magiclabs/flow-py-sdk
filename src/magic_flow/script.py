@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import logging
 
 from magic_flow.cadence.types import Value

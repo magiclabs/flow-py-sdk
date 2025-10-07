@@ -3,7 +3,8 @@
 # plugin: python-betterproto
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict
+from typing import List
 
 import betterproto2 as betterproto
 
@@ -23,7 +24,14 @@ class Account(betterproto.Message):
     balance: int = betterproto.field(2, betterproto.TYPE_UINT64)
     code: bytes = betterproto.field(3, betterproto.TYPE_BYTES)
     keys: List["AccountKey"] = betterproto.field(4, betterproto.TYPE_MESSAGE)
-    contracts: Dict[str, bytes] = betterproto.field(5, betterproto.TYPE_MAP, map_meta=(betterproto.FieldMetadata(betterproto.TYPE_STRING), betterproto.FieldMetadata(betterproto.TYPE_BYTES)))
+    contracts: Dict[str, bytes] = betterproto.field(
+        5,
+        betterproto.TYPE_MAP,
+        map_meta=(
+            betterproto.FieldMetadata(betterproto.TYPE_STRING),
+            betterproto.FieldMetadata(betterproto.TYPE_BYTES),
+        ),
+    )
 
 
 @dataclass

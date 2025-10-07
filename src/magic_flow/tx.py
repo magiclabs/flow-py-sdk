@@ -3,7 +3,9 @@ from enum import Enum
 
 import rlp
 
-from magic_flow.cadence import Value, Address, encode_arguments
+from magic_flow.cadence import Address
+from magic_flow.cadence import Value
+from magic_flow.cadence import encode_arguments
 from magic_flow.exceptions import NotCadenceValueError
 from magic_flow.frlp import rlp_encode_uint64
 from magic_flow.proto.flow import entities
@@ -28,9 +30,7 @@ class TransactionStatus(Enum):
 
 
 class TxSignature(object):
-    def __init__(
-        self, address: Address, key_id: int, signer_index: int, signature: bytes
-    ) -> None:
+    def __init__(self, address: Address, key_id: int, signer_index: int, signature: bytes) -> None:
         super().__init__()
         self.address: Address = address
         self.key_id: int = key_id
@@ -46,9 +46,7 @@ class TxSignature(object):
 
 
 class ProposalKey(object):
-    def __init__(
-        self, *, key_address: Address, key_id: int, key_sequence_number: int
-    ) -> None:
+    def __init__(self, *, key_address: Address, key_id: int, key_sequence_number: int) -> None:
         super().__init__()
         self.key_address: Address = key_address
         self.key_id: int = key_id
@@ -151,28 +149,20 @@ class Tx(object):
 
         return signers
 
-    def with_payload_signature(
-        self, address: Address, key_id: int, signer: Signer
-    ) -> "Tx":
+    def with_payload_signature(self, address: Address, key_id: int, signer: Signer) -> "Tx":
         if self._missing_fields_for_signing():
             raise Exception(
                 f"The transaction needs [{', '.join(self._missing_fields_for_signing())}] before it can be signed"
             )
-        self.payload_signers.append(
-            _TxSigner(address=address, key_id=key_id, signer=signer)
-        )
+        self.payload_signers.append(_TxSigner(address=address, key_id=key_id, signer=signer))
         return self
 
-    def with_envelope_signature(
-        self, address: Address, key_id: int, signer: Signer
-    ) -> "Tx":
+    def with_envelope_signature(self, address: Address, key_id: int, signer: Signer) -> "Tx":
         if self._missing_fields_for_signing():
             raise Exception(
                 f"The transaction needs [{', '.join(self._missing_fields_for_signing())}] before it can be signed"
             )
-        self.envelope_signers.append(
-            _TxSigner(address=address, key_id=key_id, signer=signer)
-        )
+        self.envelope_signers.append(_TxSigner(address=address, key_id=key_id, signer=signer))
         return self
 
     def _submit_signature(self) -> "Tx":

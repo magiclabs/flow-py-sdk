@@ -1,6 +1,10 @@
-from magic_flow import flow_client, ProposalKey, Tx, cadence
-from examples.common import Example, Config
+from examples.common import Config
+from examples.common import Example
 from examples.common.utils import random_account
+from magic_flow import ProposalKey
+from magic_flow import Tx
+from magic_flow import cadence
+from magic_flow import flow_client
 
 
 # -------------------------------------------------------------------------
@@ -10,16 +14,12 @@ from examples.common.utils import random_account
 # -------------------------------------------------------------------------
 class GetEventByNameForHeightRangeExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="E.1.", name="GetEventByNameForHeightRangeExample", sort_order=301
-        )
+        super().__init__(tag="E.1.", name="GetEventByNameForHeightRangeExample", sort_order=301)
 
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             _, _, _ = await random_account(client=client, ctx=ctx)
             latest_block = await client.get_latest_block()
             events = await client.get_events_for_height_range(
@@ -36,16 +36,12 @@ class GetEventByNameForHeightRangeExample(Example):
 # -------------------------------------------------------------------------
 class GetEventByNameForBlockIdsExample(Example):
     def __init__(self) -> None:
-        super().__init__(
-            tag="E.2.", name="GetEventByNameForBlockIdsExample", sort_order=302
-        )
+        super().__init__(tag="E.2.", name="GetEventByNameForBlockIdsExample", sort_order=302)
 
     async def run(self, ctx: Config):
         # First Step : Create a client to connect to the flow blockchain
         # flow_client function creates a client using the host and port
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             _, _, _ = await random_account(client=client, ctx=ctx)
             latest_block = await client.get_latest_block()
             events = await client.get_events_for_block_i_ds(
@@ -71,9 +67,7 @@ class EmitEventFromContractExample(Example):
         )
 
     async def run(self, ctx: Config):
-        async with flow_client(
-            host=ctx.access_node_host, port=ctx.access_node_port
-        ) as client:
+        async with flow_client(host=ctx.access_node_host, port=ctx.access_node_port) as client:
             address, _, _ = await random_account(
                 client=client,
                 ctx=ctx,
@@ -98,7 +92,7 @@ class EmitEventFromContractExample(Example):
             tx = Tx(
                 code=f"""
                 import EventDemo from {address.hex_with_prefix()}
-                
+
                 transaction() {{
                     prepare() {{
                         EventDemo.add(1, 6)
@@ -110,9 +104,7 @@ class EmitEventFromContractExample(Example):
                 proposal_key=ProposalKey(
                     key_address=ctx.service_account_address,
                     key_id=ctx.service_account_key_id,
-                    key_sequence_number=proposer.keys[
-                        ctx.service_account_key_id
-                    ].sequence_number,
+                    key_sequence_number=proposer.keys[ctx.service_account_key_id].sequence_number,
                 ),
             ).with_envelope_signature(
                 ctx.service_account_address,
@@ -122,9 +114,7 @@ class EmitEventFromContractExample(Example):
 
             result = await client.execute_transaction(tx)
 
-            add_event = [
-                e.value for e in result.events if isinstance(e.value, cadence.Event)
-            ][0]
+            add_event = [e.value for e in result.events if isinstance(e.value, cadence.Event)][0]
 
             assert add_event.sum.as_type(cadence.Int).value == 7
 

@@ -1,7 +1,11 @@
 import unittest
 
-from magic_flow.cadence import Address, String, Int
-from magic_flow.tx import Tx, TxSignature, ProposalKey
+from magic_flow.cadence import Address
+from magic_flow.cadence import Int
+from magic_flow.cadence import String
+from magic_flow.tx import ProposalKey
+from magic_flow.tx import Tx
+from magic_flow.tx import TxSignature
 
 
 class TestTx(unittest.TestCase):
@@ -80,9 +84,7 @@ class TestTx(unittest.TestCase):
 
 
 def base_tx() -> Tx:
-    sig = bytes.fromhex(
-        "f7225388c1d69d57e6251c9fda50cbbf9e05131e5adb81e5aa0422402f048162"
-    )
+    sig = bytes.fromhex("f7225388c1d69d57e6251c9fda50cbbf9e05131e5adb81e5aa0422402f048162")
     tx = (
         Tx(
             code="""transaction { execute { log("Hello, World!") } }""",
@@ -98,9 +100,7 @@ def base_tx() -> Tx:
         .add_authorizers(Address.from_hex("01"))
     )
 
-    signature = TxSignature(
-        address=Address.from_hex("01"), key_id=4, signer_index=0, signature=sig
-    )
+    signature = TxSignature(address=Address.from_hex("01"), key_id=4, signer_index=0, signature=sig)
     tx.payload_signatures.append(signature)
     return tx
 

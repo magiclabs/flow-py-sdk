@@ -4,7 +4,8 @@ import pathlib
 import sys
 from typing import Annotated
 
-from examples.common import Config, example_registry
+from examples.common import Config
+from examples.common import example_registry
 
 log = logging.getLogger(__name__)
 

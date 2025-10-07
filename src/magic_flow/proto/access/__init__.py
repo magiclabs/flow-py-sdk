@@ -67,9 +67,7 @@ class BlockHeaderResponse(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "BlockHeaderResponse", BlockHeaderResponse
-)
+default_message_pool.register_message("access", "BlockHeaderResponse", BlockHeaderResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -89,9 +87,7 @@ class CollectionResponse(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "CollectionResponse", CollectionResponse
-)
+default_message_pool.register_message("access", "CollectionResponse", CollectionResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -115,9 +111,7 @@ class EventsResponseResult(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "EventsResponse.Result", EventsResponseResult
-)
+default_message_pool.register_message("access", "EventsResponse.Result", EventsResponseResult)
 
 
 @dataclass(eq=False, repr=False)
@@ -126,9 +120,7 @@ class ExecuteScriptAtBlockHeightRequest(betterproto2.Message):
 
     script: "bytes" = betterproto2.field(2, betterproto2.TYPE_BYTES)
 
-    arguments: "list[bytes]" = betterproto2.field(
-        3, betterproto2.TYPE_BYTES, repeated=True
-    )
+    arguments: "list[bytes]" = betterproto2.field(3, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(
@@ -142,9 +134,7 @@ class ExecuteScriptAtBlockIdRequest(betterproto2.Message):
 
     script: "bytes" = betterproto2.field(2, betterproto2.TYPE_BYTES)
 
-    arguments: "list[bytes]" = betterproto2.field(
-        3, betterproto2.TYPE_BYTES, repeated=True
-    )
+    arguments: "list[bytes]" = betterproto2.field(3, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(
@@ -160,9 +150,7 @@ class ExecuteScriptAtLatestBlockRequest(betterproto2.Message):
 
     script: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
-    arguments: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    arguments: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(
@@ -175,9 +163,7 @@ class ExecuteScriptResponse(betterproto2.Message):
     value: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
 
-default_message_pool.register_message(
-    "access", "ExecuteScriptResponse", ExecuteScriptResponse
-)
+default_message_pool.register_message("access", "ExecuteScriptResponse", ExecuteScriptResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -221,9 +207,7 @@ class GetAccountResponse(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "GetAccountResponse", GetAccountResponse
-)
+default_message_pool.register_message("access", "GetAccountResponse", GetAccountResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -231,9 +215,7 @@ class GetBlockByHeightRequest(betterproto2.Message):
     height: "int" = betterproto2.field(1, betterproto2.TYPE_UINT64)
 
 
-default_message_pool.register_message(
-    "access", "GetBlockByHeightRequest", GetBlockByHeightRequest
-)
+default_message_pool.register_message("access", "GetBlockByHeightRequest", GetBlockByHeightRequest)
 
 
 @dataclass(eq=False, repr=False)
@@ -241,9 +223,7 @@ class GetBlockByIdRequest(betterproto2.Message):
     id: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
 
-default_message_pool.register_message(
-    "access", "GetBlockByIDRequest", GetBlockByIdRequest
-)
+default_message_pool.register_message("access", "GetBlockByIDRequest", GetBlockByIdRequest)
 
 
 @dataclass(eq=False, repr=False)
@@ -284,9 +264,7 @@ default_message_pool.register_message(
 class GetEventsForBlockIDsRequest(betterproto2.Message):
     type: "str" = betterproto2.field(1, betterproto2.TYPE_STRING)
 
-    block_ids: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    block_ids: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(
@@ -335,9 +313,7 @@ class GetLatestBlockRequest(betterproto2.Message):
     is_sealed: "bool" = betterproto2.field(1, betterproto2.TYPE_BOOL)
 
 
-default_message_pool.register_message(
-    "access", "GetLatestBlockRequest", GetLatestBlockRequest
-)
+default_message_pool.register_message("access", "GetLatestBlockRequest", GetLatestBlockRequest)
 
 
 @dataclass(eq=False, repr=False)
@@ -369,9 +345,7 @@ class GetTransactionRequest(betterproto2.Message):
     id: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
 
-default_message_pool.register_message(
-    "access", "GetTransactionRequest", GetTransactionRequest
-)
+default_message_pool.register_message("access", "GetTransactionRequest", GetTransactionRequest)
 
 
 @dataclass(eq=False, repr=False)
@@ -401,9 +375,7 @@ class SendTransactionRequest(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "SendTransactionRequest", SendTransactionRequest
-)
+default_message_pool.register_message("access", "SendTransactionRequest", SendTransactionRequest)
 
 
 @dataclass(eq=False, repr=False)
@@ -411,9 +383,7 @@ class SendTransactionResponse(betterproto2.Message):
     id: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
 
-default_message_pool.register_message(
-    "access", "SendTransactionResponse", SendTransactionResponse
-)
+default_message_pool.register_message("access", "SendTransactionResponse", SendTransactionResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -423,9 +393,7 @@ class TransactionResponse(betterproto2.Message):
     )
 
 
-default_message_pool.register_message(
-    "access", "TransactionResponse", TransactionResponse
-)
+default_message_pool.register_message("access", "TransactionResponse", TransactionResponse)
 
 
 @dataclass(eq=False, repr=False)
@@ -487,9 +455,7 @@ class AccessApiStub:
             BlockHeaderResponse.FromString,
         )(message)
 
-    def get_block_header_by_id(
-        self, message: "GetBlockHeaderByIdRequest"
-    ) -> "BlockHeaderResponse":
+    def get_block_header_by_id(self, message: "GetBlockHeaderByIdRequest") -> "BlockHeaderResponse":
         """
         GetBlockHeaderByID gets a block header by ID.
         """
@@ -537,9 +503,7 @@ class AccessApiStub:
             BlockResponse.FromString,
         )(message)
 
-    def get_block_by_height(
-        self, message: "GetBlockByHeightRequest"
-    ) -> "BlockResponse":
+    def get_block_by_height(self, message: "GetBlockByHeightRequest") -> "BlockResponse":
         """
         GetBlockByHeight gets a full block by height.
         """
@@ -550,9 +514,7 @@ class AccessApiStub:
             BlockResponse.FromString,
         )(message)
 
-    def get_collection_by_id(
-        self, message: "GetCollectionByIdRequest"
-    ) -> "CollectionResponse":
+    def get_collection_by_id(self, message: "GetCollectionByIdRequest") -> "CollectionResponse":
         """
         Collections
 
@@ -565,9 +527,7 @@ class AccessApiStub:
             CollectionResponse.FromString,
         )(message)
 
-    def send_transaction(
-        self, message: "SendTransactionRequest"
-    ) -> "SendTransactionResponse":
+    def send_transaction(self, message: "SendTransactionRequest") -> "SendTransactionResponse":
         """
         Transactions
 
@@ -580,9 +540,7 @@ class AccessApiStub:
             SendTransactionResponse.FromString,
         )(message)
 
-    def get_transaction(
-        self, message: "GetTransactionRequest"
-    ) -> "TransactionResponse":
+    def get_transaction(self, message: "GetTransactionRequest") -> "TransactionResponse":
         """
         GetTransaction gets a transaction by ID.
         """
@@ -703,9 +661,7 @@ class AccessApiStub:
             EventsResponse.FromString,
         )(message)
 
-    def get_events_for_block_i_ds(
-        self, message: "GetEventsForBlockIDsRequest"
-    ) -> "EventsResponse":
+    def get_events_for_block_i_ds(self, message: "GetEventsForBlockIDsRequest") -> "EventsResponse":
         """
         GetEventsForBlockIDs retrieves events for the specified block IDs and event type.
         """

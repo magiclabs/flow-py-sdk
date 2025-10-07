@@ -1,7 +1,10 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import TypeVar, Type, Optional
+from abc import ABC
+from abc import abstractmethod
+from typing import Optional
+from typing import Type
+from typing import TypeVar
 
 import magic_flow.cadence.constants as c
 from magic_flow.exceptions import CadenceIncorrectTypeError

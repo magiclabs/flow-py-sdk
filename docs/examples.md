@@ -18,7 +18,7 @@ The first step is to install the dependencies of `magic-flow` with **poetry**. T
 
 ```sh
 poetry install
-``` 
+```
 
 After that start the flow emulator in **./example** directory (because that is where the `flow.json` the emulator configuration is), using:
 
@@ -26,7 +26,7 @@ After that start the flow emulator in **./example** directory (because that is w
 flow emulator
 ```
 
-### 2. Runing examples
+### 2. Running examples
 
 To run all the examples use:
 

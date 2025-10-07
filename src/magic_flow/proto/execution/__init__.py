@@ -39,9 +39,7 @@ class ExecuteScriptAtBlockIdRequest(betterproto2.Message):
 
     script: "bytes" = betterproto2.field(2, betterproto2.TYPE_BYTES)
 
-    arguments: "list[bytes]" = betterproto2.field(
-        3, betterproto2.TYPE_BYTES, repeated=True
-    )
+    arguments: "list[bytes]" = betterproto2.field(3, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(
@@ -91,9 +89,7 @@ default_message_pool.register_message(
 class GetEventsForBlockIDsRequest(betterproto2.Message):
     type: "str" = betterproto2.field(1, betterproto2.TYPE_STRING)
 
-    block_ids: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    block_ids: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message(

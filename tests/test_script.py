@@ -1,6 +1,8 @@
 from unittest import TestCase
 
-from magic_flow import Script, cadence, exceptions
+from magic_flow import Script
+from magic_flow import cadence
+from magic_flow import exceptions
 
 
 class TestScript(TestCase):

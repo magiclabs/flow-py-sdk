@@ -1,6 +1,8 @@
 from unittest import TestCase
 
-from magic_flow import AccountKey, SignAlgo, HashAlgo
+from magic_flow import AccountKey
+from magic_flow import HashAlgo
+from magic_flow import SignAlgo
 from magic_flow.proto.flow.entities import AccountKey as ProtoAccountKey
 
 

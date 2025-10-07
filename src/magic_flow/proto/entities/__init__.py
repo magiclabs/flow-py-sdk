@@ -51,9 +51,7 @@ class Account(betterproto2.Message):
 
     code: "bytes" = betterproto2.field(3, betterproto2.TYPE_BYTES)
 
-    keys: "list[AccountKey]" = betterproto2.field(
-        4, betterproto2.TYPE_MESSAGE, repeated=True
-    )
+    keys: "list[AccountKey]" = betterproto2.field(4, betterproto2.TYPE_MESSAGE, repeated=True)
 
 
 default_message_pool.register_message("entities", "Account", Account)
@@ -96,13 +94,9 @@ class Block(betterproto2.Message):
         5, betterproto2.TYPE_MESSAGE, repeated=True
     )
 
-    block_seals: "list[BlockSeal]" = betterproto2.field(
-        6, betterproto2.TYPE_MESSAGE, repeated=True
-    )
+    block_seals: "list[BlockSeal]" = betterproto2.field(6, betterproto2.TYPE_MESSAGE, repeated=True)
 
-    signatures: "list[bytes]" = betterproto2.field(
-        7, betterproto2.TYPE_BYTES, repeated=True
-    )
+    signatures: "list[bytes]" = betterproto2.field(7, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message("entities", "Block", Block)
@@ -149,9 +143,7 @@ default_message_pool.register_message("entities", "BlockSeal", BlockSeal)
 class Collection(betterproto2.Message):
     id: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
-    transaction_ids: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    transaction_ids: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
 
 default_message_pool.register_message("entities", "Collection", Collection)
@@ -161,14 +153,10 @@ default_message_pool.register_message("entities", "Collection", Collection)
 class CollectionGuarantee(betterproto2.Message):
     collection_id: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
-    signatures: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    signatures: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
 
-default_message_pool.register_message(
-    "entities", "CollectionGuarantee", CollectionGuarantee
-)
+default_message_pool.register_message("entities", "CollectionGuarantee", CollectionGuarantee)
 
 
 @dataclass(eq=False, repr=False)
@@ -191,9 +179,7 @@ default_message_pool.register_message("entities", "Event", Event)
 class Transaction(betterproto2.Message):
     script: "bytes" = betterproto2.field(1, betterproto2.TYPE_BYTES)
 
-    arguments: "list[bytes]" = betterproto2.field(
-        2, betterproto2.TYPE_BYTES, repeated=True
-    )
+    arguments: "list[bytes]" = betterproto2.field(2, betterproto2.TYPE_BYTES, repeated=True)
 
     reference_block_id: "bytes" = betterproto2.field(3, betterproto2.TYPE_BYTES)
 
@@ -205,9 +191,7 @@ class Transaction(betterproto2.Message):
 
     payer: "bytes" = betterproto2.field(6, betterproto2.TYPE_BYTES)
 
-    authorizers: "list[bytes]" = betterproto2.field(
-        7, betterproto2.TYPE_BYTES, repeated=True
-    )
+    authorizers: "list[bytes]" = betterproto2.field(7, betterproto2.TYPE_BYTES, repeated=True)
 
     payload_signatures: "list[TransactionSignature]" = betterproto2.field(
         8, betterproto2.TYPE_MESSAGE, repeated=True
@@ -230,9 +214,7 @@ class TransactionProposalKey(betterproto2.Message):
     sequence_number: "int" = betterproto2.field(3, betterproto2.TYPE_UINT64)
 
 
-default_message_pool.register_message(
-    "entities", "Transaction.ProposalKey", TransactionProposalKey
-)
+default_message_pool.register_message("entities", "Transaction.ProposalKey", TransactionProposalKey)
 
 
 @dataclass(eq=False, repr=False)
@@ -244,9 +226,7 @@ class TransactionSignature(betterproto2.Message):
     signature: "bytes" = betterproto2.field(3, betterproto2.TYPE_BYTES)
 
 
-default_message_pool.register_message(
-    "entities", "Transaction.Signature", TransactionSignature
-)
+default_message_pool.register_message("entities", "Transaction.Signature", TransactionSignature)
 
 
 from ..google import protobuf as _google__protobuf__

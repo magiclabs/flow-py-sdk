@@ -1,6 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 
-from magic_flow.signer import TransactionDomainTag, UserDomainTag
+from magic_flow.signer import TransactionDomainTag
+from magic_flow.signer import UserDomainTag
 
 
 class Verifier(ABC):

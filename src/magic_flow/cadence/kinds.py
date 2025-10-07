@@ -1,9 +1,11 @@
-from abc import ABCMeta, ABC
+from abc import ABC
+from abc import ABCMeta
 from typing import Optional
 
-from magic_flow.cadence import Kind
 import magic_flow.cadence.constants as c
-from magic_flow.cadence.decode import decode, add_cadence_kind_decoder
+from magic_flow.cadence import Kind
+from magic_flow.cadence.decode import add_cadence_kind_decoder
+from magic_flow.cadence.decode import decode
 
 
 class OptionalKind(Kind):
@@ -285,7 +287,7 @@ class EntitlementUnauthorizedKind(Kind):
         return {"entitlements": None}
 
     def __str__(self):
-        return f"Unauthorized"
+        return "Unauthorized"
 
     @classmethod
     def kind_str(cls) -> str:
@@ -351,18 +353,14 @@ class EntitlementsKind(Kind, ABC):
     @classmethod
     def decode(cls, value) -> "Kind":
         entitlements_val = value[c.entitlementsKey]
-        entitlements = [
-            decode(v).as_kind(EntitlementBaseKind) for v in entitlements_val
-        ]
+        entitlements = [decode(v).as_kind(EntitlementBaseKind) for v in entitlements_val]
         return cls(entitlements)
 
     def encode_kind(self) -> dict:
         return {c.entitlementsKey: [e.encode() for e in self.entitlements]}
 
     def __str__(self):
-        return (
-            f"{self.kind_str()}({', '.join([e.kind_str() for e in self.entitlements])})"
-        )
+        return f"{self.kind_str()}({', '.join([e.kind_str() for e in self.entitlements])})"
 
 
 class EntitlementConjunctionSetKind(EntitlementsKind):

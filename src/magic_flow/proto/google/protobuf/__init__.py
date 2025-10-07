@@ -134,15 +134,13 @@ class Timestamp(betterproto2.Message):
 
         dt = dt.astimezone(datetime.timezone.utc)
 
-        # manual epoch offset calulation to avoid rounding errors,
+        # manual epoch offset calculation to avoid rounding errors,
         # to support negative timestamps (before 1970) and skirt
         # around datetime bugs (apparently 0 isn't a year in [0, 9999]??)
         offset = dt - datetime.datetime(1970, 1, 1, tzinfo=datetime.timezone.utc)
         # below is the same as timedelta.total_seconds() but without dividing by 1e6
         # so we end up with microseconds as integers instead of seconds as float
-        offset_us = (
-            offset.days * 24 * 60 * 60 + offset.seconds
-        ) * 10**6 + offset.microseconds
+        offset_us = (offset.days * 24 * 60 * 60 + offset.seconds) * 10**6 + offset.microseconds
         seconds, us = divmod(offset_us, 10**6)
         return cls(seconds, us * 1000)
 
@@ -150,9 +148,7 @@ class Timestamp(betterproto2.Message):
         # datetime.fromtimestamp() expects a timestamp in seconds, not microseconds
         # if we pass it as a floating point number, we will run into rounding errors
         # see also #407
-        offset = datetime.timedelta(
-            seconds=self.seconds, microseconds=self.nanos // 1000
-        )
+        offset = datetime.timedelta(seconds=self.seconds, microseconds=self.nanos // 1000)
         return datetime.datetime(1970, 1, 1, tzinfo=datetime.timezone.utc) + offset
 
     @staticmethod
@@ -192,7 +188,7 @@ class Timestamp(betterproto2.Message):
         casing: betterproto2.Casing = betterproto2.Casing.CAMEL,
         include_default_values: bool = False,
     ) -> dict[str, typing.Any] | typing.Any:
-        # If the output format is PYTHON, we should have kept the wraped type without building the real class
+        # If the output format is PYTHON, we should have kept the wrapped type without building the real class
         assert output_format == betterproto2.OutputFormat.PROTO_JSON
 
         return Timestamp.timestamp_to_json(self.to_datetime())

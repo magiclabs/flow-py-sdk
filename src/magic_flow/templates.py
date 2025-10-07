@@ -2,7 +2,8 @@ from typing import Annotated
 
 import magic_flow.cadence as cadence
 from magic_flow.account_key import AccountKey
-from magic_flow.tx import Tx, ProposalKey
+from magic_flow.tx import ProposalKey
+from magic_flow.tx import Tx
 
 
 def create_account_template(
@@ -11,7 +12,7 @@ def create_account_template(
     reference_block_id: bytes = None,
     payer: cadence.Address = None,
     proposal_key: ProposalKey = None,
-    contracts: dict[Annotated[str, "name"], Annotated[str, "source"]] = None
+    contracts: dict[Annotated[str, "name"], Annotated[str, "source"]] = None,
 ) -> Tx:
     if keys:
         cadence_public_keys = cadence.Array([k.crypto_key_list_entry() for k in keys])
@@ -20,9 +21,7 @@ def create_account_template(
     if contracts:
         cadence_contracts = cadence.Dictionary(
             [
-                cadence.KeyValuePair(
-                    cadence.String(k), cadence.String(v.encode("utf-8").hex())
-                )
+                cadence.KeyValuePair(cadence.String(k), cadence.String(v.encode("utf-8").hex()))
                 for (k, v) in contracts.items()
             ]
         )
@@ -37,12 +36,12 @@ def create_account_template(
             transaction(publicKeys: [Crypto.KeyListEntry], contracts: {String: String}) {
                 prepare(signer: auth(BorrowValue) &Account) {
                     let account = Account(payer: signer)
-            
+
                     // add all the keys to the account
                     for key in publicKeys {
                         account.keys.add(publicKey: key.publicKey, hashAlgorithm: key.hashAlgorithm, weight: key.weight)
                     }
-                    
+
                     // add contracts if provided
                     for contract in contracts.keys {
                         account.contracts.add(name: contract, code: contracts[contract]!.decodeHex())
@@ -96,7 +95,7 @@ class TransactionTemplates:
       message: String,
     ): Bool {
         let keyList = Crypto.KeyList()
-        
+
         let account = getAccount(address)
         let keys = account.keys
         for keyIndex in keyIndexes {
@@ -118,9 +117,9 @@ class TransactionTemplates:
                 return false
             }
         }
-        
+
         let signatureSet: [Crypto.KeyListSignature] = []
-        
+
         var i = 0
         for signature in signatures {
             signatureSet.append(
@@ -131,7 +130,7 @@ class TransactionTemplates:
             )
             i = i + 1
         }
-        
+
         return keyList.verify(
             signatureSet: signatureSet,
             signedData: message.utf8,

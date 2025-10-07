@@ -3,7 +3,8 @@ from __future__ import annotations
 from abc import ABCMeta
 
 import magic_flow.cadence.constants as c
-from magic_flow.cadence.decode import decode, add_cadence_decoder
+from magic_flow.cadence.decode import add_cadence_decoder
+from magic_flow.cadence.decode import decode
 from magic_flow.cadence.value import Value
 
 
@@ -27,8 +28,7 @@ class Composite(Value, metaclass=ABCMeta):
             c.valueKey: {
                 c.idKey: self.id,
                 c.fieldsKey: [
-                    {c.nameKey: f, c.valueKey: self.fields[f].encode()}
-                    for f in self.field_order
+                    {c.nameKey: f, c.valueKey: self.fields[f].encode()} for f in self.field_order
                 ],
             }
         }

@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC
+from abc import abstractmethod
 from typing import Optional
 
 from magic_flow.exceptions import PySDKError
@@ -9,9 +10,7 @@ DomainTagLength = 32
 def _padded_domain_tag(s: str) -> bytes:
     encoded = s.encode("utf-8")
     if len(encoded) > DomainTagLength:
-        raise PySDKError(
-            f"domain tag {s} cannot be longer than {DomainTagLength} bytes"
-        )
+        raise PySDKError(f"domain tag {s} cannot be longer than {DomainTagLength} bytes")
     return encoded + bytearray(DomainTagLength - len(s))
 
 

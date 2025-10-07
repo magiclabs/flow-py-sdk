@@ -1,5 +1,8 @@
 import json
-from typing import Any, Optional as Optional, Tuple, Callable
+from typing import Any
+from typing import Callable
+from typing import Optional as Optional
+from typing import Tuple
 
 from magic_flow.cadence.kind import Kind
 from magic_flow.cadence.types import Value
@@ -16,7 +19,7 @@ class CadenceJsonEncoder(json.JSONEncoder):
         sort_keys: bool = ...,
         indent: Optional[int] = ...,
         separators: Optional[Tuple[str, str]] = ...,
-        default: Optional[Callable[..., Any]] = ...
+        default: Optional[Callable[..., Any]] = ...,
     ) -> None:
         super().__init__(
             skipkeys=skipkeys,
@@ -43,10 +46,8 @@ def encode_arguments(arguments: list[Value]) -> list[bytes]:
     # the separators and the new line are there to get an identical json as the flow-go-sdk does (usually).
     # It doesn't need to be identical, but it is convenient for comparative testing with the go-sdk.
     return [
-        (
-            json.dumps(
-                a, ensure_ascii=False, cls=CadenceJsonEncoder, separators=(",", ":")
-            )
-        ).encode("utf-8")
+        (json.dumps(a, ensure_ascii=False, cls=CadenceJsonEncoder, separators=(",", ":"))).encode(
+            "utf-8"
+        )
         for a in arguments
     ]

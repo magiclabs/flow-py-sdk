@@ -1,6 +1,7 @@
 import json
 import unittest
 from dataclasses import dataclass
+
 from magic_flow import cadence
 
 
@@ -74,9 +75,7 @@ class TestEncode(unittest.TestCase):
     def testEncodeString(self):
         self._encodeAndDecodeAll(
             [
-                _EncodeTestParams(
-                    "Empty", cadence.String(""), '{"type":"String","value":""}'
-                ),
+                _EncodeTestParams("Empty", cadence.String(""), '{"type":"String","value":""}'),
                 _EncodeTestParams(
                     "Non-empty",
                     cadence.String("foo"),
@@ -119,7 +118,7 @@ class TestEncode(unittest.TestCase):
                     cadence.Int(
                         -57896044618658097711785492504343953926634992332820282019728792003956564819978
                     ),
-                    """{"type": "Int", 
+                    """{"type": "Int",
                 "value": "-57896044618658097711785492504343953926634992332820282019728792003956564819978"}""",
                 ),
                 _EncodeTestParams(
@@ -127,7 +126,7 @@ class TestEncode(unittest.TestCase):
                     cadence.Int(
                         115792089237316195423570985008687907853269984665640564039457584007913129639945
                     ),
-                    """{"type": "Int", 
+                    """{"type": "Int",
                 "value": "115792089237316195423570985008687907853269984665640564039457584007913129639945"}""",
                 ),
             ]
@@ -844,9 +843,7 @@ class TestEncode(unittest.TestCase):
     def testEncodeEvent(self):
         simple_event = _EncodeTestParams(
             "Simple",
-            cadence.Event(
-                "S.test.FooEvent", [("a", cadence.Int(1)), ("b", cadence.String("foo"))]
-            ),
+            cadence.Event("S.test.FooEvent", [("a", cadence.Int(1)), ("b", cadence.String("foo"))]),
             """
             {
               "type": "Event",
@@ -975,9 +972,7 @@ class TestEncode(unittest.TestCase):
     def testEncodeInclusiveRange(self):
         range = _EncodeTestParams(
             "Inclusive Range",
-            cadence.InclusiveRange(
-                cadence.Int256(10), cadence.Int256(20), cadence.Int256(5)
-            ),
+            cadence.InclusiveRange(cadence.Int256(10), cadence.Int256(20), cadence.Int256(5)),
             """
             {
               "type": "InclusiveRange",
@@ -1120,7 +1115,7 @@ class TestEncode(unittest.TestCase):
               "kind": "Dictionary",
               "key": {
                 "kind": "String"
-              }, 
+              },
               "value": {
                 "kind": "UInt16"
               }
@@ -1205,8 +1200,8 @@ class TestEncode(unittest.TestCase):
                   "type": {
                     "kind": "String"
                   }
-                } 
-              ], 
+                }
+              ],
               "return": {
                 "kind": "String"
               }
@@ -1238,8 +1233,8 @@ class TestEncode(unittest.TestCase):
                   "type": {
                     "kind": "String"
                   }
-                } 
-              ], 
+                }
+              ],
               "purity": "view",
               "return": {
                 "kind": "String"
@@ -1483,15 +1478,9 @@ class TestEncode(unittest.TestCase):
                                 [
                                     cadence.FieldKind("uuid", cadence.UInt64Kind()),
                                     cadence.FieldKind("id", cadence.UInt64Kind()),
-                                    cadence.FieldKind(
-                                        "editionID", cadence.UInt64Kind()
-                                    ),
-                                    cadence.FieldKind(
-                                        "serialNumber", cadence.UInt64Kind()
-                                    ),
-                                    cadence.FieldKind(
-                                        "mintingDate", cadence.UFix64Kind()
-                                    ),
+                                    cadence.FieldKind("editionID", cadence.UInt64Kind()),
+                                    cadence.FieldKind("serialNumber", cadence.UInt64Kind()),
+                                    cadence.FieldKind("mintingDate", cadence.UFix64Kind()),
                                 ],
                             )
                         ),

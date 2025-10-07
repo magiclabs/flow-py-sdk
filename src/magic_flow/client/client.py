@@ -1,22 +1,27 @@
 import asyncio
 import json
 import logging
-from types import TracebackType
-from typing import Optional, Type, Annotated, List, Union
-
 import time
+from types import TracebackType
+from typing import Annotated
+from typing import List
+from typing import Optional
+from typing import Type
+from typing import Union
+
 import grpc
 from grpc import Channel
 
 from magic_flow import cadence
-from magic_flow.cadence import Value, cadence_object_hook, encode_arguments
+from magic_flow.cadence import Value
+from magic_flow.cadence import cadence_object_hook
+from magic_flow.cadence import encode_arguments
 from magic_flow.client import entities
-from magic_flow.proto.flow.access import (
-    AccessApiStub,
-    PingResponse,
-)
+from magic_flow.proto.flow.access import AccessApiStub
+from magic_flow.proto.flow.access import PingResponse
 from magic_flow.script import Script
-from magic_flow.tx import Tx, TransactionStatus
+from magic_flow.tx import TransactionStatus
+from magic_flow.tx import Tx
 
 log = logging.getLogger(__name__)
 
@@ -27,7 +32,7 @@ class AccessAPI(AccessApiStub):
         channel: "Channel",
         *,
         timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
+        deadline: Optional[float] = None,
         metadata=None,
     ) -> None:
         super().__init__(channel=channel)
@@ -46,9 +51,7 @@ class AccessAPI(AccessApiStub):
     ) -> None:
         await self._channel.close()
 
-    async def get_latest_block_header(
-        self, *, is_sealed: bool = False
-    ) -> entities.BlockHeader:
+    async def get_latest_block_header(self, *, is_sealed: bool = False) -> entities.BlockHeader:
         """
         Get the full payload of the latest sealed or unsealed block header.
 
@@ -84,9 +87,7 @@ class AccessAPI(AccessApiStub):
         response = await super().get_block_header_by_i_d(id=id)
         return entities.BlockHeader.from_proto(response.block)
 
-    async def get_block_header_by_height(
-        self, *, height: int = 0
-    ) -> entities.BlockHeader:
+    async def get_block_header_by_height(self, *, height: int = 0) -> entities.BlockHeader:
         """
         Get a block header using its height.
 
@@ -120,6 +121,7 @@ class AccessAPI(AccessApiStub):
 
         """
         from magic_flow.proto.flow.access import GetLatestBlockRequest
+
         message = GetLatestBlockRequest(is_sealed=is_sealed)
         response = await super().get_latest_block(message)
         return entities.Block.from_proto(response.block)
@@ -215,6 +217,7 @@ class AccessAPI(AccessApiStub):
 
         """
         from magic_flow.proto.flow.access import GetAccountRequest
+
         address_bytes = cadence.Address.convert_to_bytes(address)
         message = GetAccountRequest(address=address_bytes)
         response = await super().get_account(message)
@@ -291,9 +294,7 @@ class AccessAPI(AccessApiStub):
             Return value is encoded using the JSON-Cadence data interchange format.
 
         """
-        response = await super().execute_script_at_latest_block(
-            script=script, arguments=arguments
-        )
+        response = await super().execute_script_at_latest_block(script=script, arguments=arguments)
         return response.value
 
     async def execute_script_at_block_i_d(
@@ -397,9 +398,7 @@ class AccessAPI(AccessApiStub):
             Return the event results that are grouped by block, with each group specifying a block ID, height and block timestamp.
 
         """
-        response = await super().get_events_for_block_i_ds(
-            type=type, block_ids=block_ids
-        )
+        response = await super().get_events_for_block_i_ds(type=type, block_ids=block_ids)
         return [entities.EventsResponseResult.from_proto(er) for er in response.results]
 
     async def get_network_parameters(self) -> entities.GetNetworkParametersResponse:
@@ -457,11 +456,11 @@ class AccessAPI(AccessApiStub):
             )
         else:
             log.debug(
-                f"Executing script at latest block",
+                "Executing script at latest block",
             )
             result = await self.execute_script_at_latest_block(script=s, arguments=a)
 
-        log.debug(f"Script Executed")
+        log.debug("Script Executed")
 
         if result is None or result is None:
             return None
@@ -536,7 +535,7 @@ class AccessAPI(AccessApiStub):
         -------
         entities.TransactionResultResponse
         """
-        log.debug(f"Sending transaction")
+        log.debug("Sending transaction")
         if tx.reference_block_id is None:
             tx.reference_block_id = (await self.get_latest_block(is_sealed=False)).id
 
@@ -549,27 +548,23 @@ class AccessAPI(AccessApiStub):
         if not wait_for_seal:
             return tx_result
 
-        log.info(f"Waiting for transaction to seal")
+        log.info("Waiting for transaction to seal")
 
         end_time = time.monotonic() + timeout
         while (
-            TransactionStatus(tx_result.status)
-            is not TransactionStatus.TransactionStatusSealed
+            TransactionStatus(tx_result.status) is not TransactionStatus.TransactionStatusSealed
             and time.monotonic() < end_time
         ):
             await asyncio.sleep(1)
             tx_result = await self.get_transaction_result(id=result.id)
 
-        if (
-            TransactionStatus(tx_result.status)
-            is not TransactionStatus.TransactionStatusSealed
-        ):
+        if TransactionStatus(tx_result.status) is not TransactionStatus.TransactionStatusSealed:
             raise TimeoutError(f"Waiting for transaction {result.id.hex()} to seal")
 
         if tx_result.error_message:
             raise Exception(tx_result.error_message)  # TODO wrap error
 
-        log.info(f"Got transaction seal")
+        log.info("Got transaction seal")
         return tx_result
 
 
@@ -584,7 +579,5 @@ def flow_client(
     # Create gRPC channel
     target = f"{host}:{port}" if host and port else "localhost:3569"
     channel = grpc.aio.insecure_channel(target)
-    
-    return AccessAPI(
-        channel=channel, timeout=timeout, deadline=deadline, metadata=metadata
-    )
+
+    return AccessAPI(channel=channel, timeout=timeout, deadline=deadline, metadata=metadata)

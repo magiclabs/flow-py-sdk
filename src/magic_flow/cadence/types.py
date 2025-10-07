@@ -1,16 +1,15 @@
 from __future__ import annotations
 
 from distutils.util import strtobool
-from typing import (
-    List,
-    Optional as pyOptional,
-    Type as pyType,
-)
+from typing import List
+from typing import Optional as pyOptional
+from typing import Type as pyType
 
 import magic_flow.cadence.constants as c
-from magic_flow.cadence.kind import Kind
 from magic_flow.cadence.address import Address
-from magic_flow.cadence.decode import decode, add_cadence_decoder
+from magic_flow.cadence.decode import add_cadence_decoder
+from magic_flow.cadence.decode import decode
+from magic_flow.cadence.kind import Kind
 from magic_flow.cadence.value import Value
 
 
@@ -19,7 +18,7 @@ class Void(Value):
         super().__init__()
 
     def __str__(self):
-        return f"Void"
+        return "Void"
 
     def encode_value(self) -> dict:
         return {}
@@ -474,9 +473,7 @@ class Fix64(Value):
     def decode(cls, value) -> Fix64:
         str_values = str(value[c.valueKey]).split(".")
         sign: int = -1 if int(str_values[0]) < 0 else 1
-        return Fix64(
-            sign * (abs(int(str_values[0])) * c.fix64_factor + int(str_values[1]))
-        )
+        return Fix64(sign * (abs(int(str_values[0])) * c.fix64_factor + int(str_values[1])))
 
     @classmethod
     def type_str(cls) -> str:
@@ -512,7 +509,7 @@ class Array(Value):
         self.value = value
 
     def __str__(self):
-        return f'[{",".join([str(item) for item in self.value])}]'
+        return f"[{','.join([str(item) for item in self.value])}]"
 
     def encode_value(self) -> dict:
         return {c.valueKey: [i.encode() for i in self.value]}
@@ -539,9 +536,7 @@ class Dictionary(Value):
         self.value = value
 
     def __str__(self):
-        return (
-            f'{{{",".join([f"{{{item.key}:{item.value}}}" for item in self.value])}}}'
-        )
+        return f"{{{','.join([f'{{{item.key}:{item.value}}}' for item in self.value])}}}"
 
     def encode_value(self) -> dict:
         return {
@@ -561,10 +556,7 @@ class Dictionary(Value):
     @classmethod
     def decode(cls, value) -> Dictionary:
         obj = value[c.valueKey]
-        items = [
-            KeyValuePair(decode(item[c.keyKey]), decode(item[c.valueKey]))
-            for item in obj
-        ]
+        items = [KeyValuePair(decode(item[c.keyKey]), decode(item[c.valueKey])) for item in obj]
         return Dictionary(items)
 
     @classmethod
@@ -582,9 +574,7 @@ class Path(Value):
         return f"/{self.domain}/{self.identifier}"
 
     def encode_value(self) -> dict:
-        return {
-            c.valueKey: {c.domainKey: self.domain, c.identifierKey: self.identifier}
-        }
+        return {c.valueKey: {c.domainKey: self.domain, c.identifierKey: self.identifier}}
 
     @classmethod
     def decode(cls, value) -> Path:
