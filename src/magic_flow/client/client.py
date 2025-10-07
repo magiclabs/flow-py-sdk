@@ -5,10 +5,8 @@ from types import TracebackType
 from typing import Optional, Type, Annotated, List, Union
 
 import time
-from grpclib.client import Channel
-from grpclib.config import Configuration
-from grpclib.encoding.base import CodecBase, StatusDetailsCodecBase
-from grpclib.metadata import Deadline
+import grpc
+from grpc import Channel
 
 from magic_flow import cadence
 from magic_flow.cadence import Value, cadence_object_hook, encode_arguments
@@ -46,7 +44,7 @@ class AccessAPI(AccessApiStub):
         exc_val: Optional[BaseException],
         exc_tb: Optional[TracebackType],
     ) -> None:
-        self._channel.close()
+        await self._channel.close()
 
     async def get_latest_block_header(
         self, *, is_sealed: bool = False
@@ -579,27 +577,14 @@ def flow_client(
     host: Optional[str] = None,
     port: Optional[int] = None,
     *,
-    loop: Optional[asyncio.AbstractEventLoop] = None,
-    path: Optional[str] = None,
-    codec: Optional[CodecBase] = None,
-    status_details_codec: Optional[StatusDetailsCodecBase] = None,
-    ssl=None,
-    config: Optional[Configuration] = None,
     timeout: Optional[float] = None,
-    deadline: Optional["Deadline"] = None,
+    deadline: Optional[float] = None,
     metadata=None,
 ) -> AccessAPI:
-    channel = Channel(
-        host=host,
-        port=port,
-        loop=loop,
-        path=path,
-        codec=codec,
-        status_details_codec=status_details_codec,
-        ssl=ssl,
-        config=config,
-    )
-
+    # Create gRPC channel
+    target = f"{host}:{port}" if host and port else "localhost:3569"
+    channel = grpc.aio.insecure_channel(target)
+    
     return AccessAPI(
         channel=channel, timeout=timeout, deadline=deadline, metadata=metadata
     )
